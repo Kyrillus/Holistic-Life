@@ -3,7 +3,7 @@ import {Fade as Hamburger} from 'hamburger-react'
 import Notification from "./notification";
 
 function Navbar() {
-    const navItems = ["Dashboard", "Network", "Projects", "Contact"];
+    const navItems = ["Dashboard", "Network", "Contact"];
     const settingsItems = ["Your Profile", "Settings", "Sign Out"];
     const [profileClicked, setProfileClicked] = useState(false);
     const [burgerMenuClicked, setburgerMenuClicked] = useState(false);
@@ -21,7 +21,7 @@ function Navbar() {
                         <div className="flex px-2 lg:px-0">
                             <div className="flex flex-shrink-0 items-center">
                                 <img className="h-10 w-auto lg:h-12 cursor-pointer"
-                                     src="/sti-consulting-logo.png"
+                                     src=""
                                      alt=""/>
                             </div>
                             <div className="hidden lg:ml-6 lg:flex">

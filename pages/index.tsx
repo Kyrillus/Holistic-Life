@@ -8,12 +8,12 @@ const LandingPage: NextPage = () => {
     return (
         <div className="">
             <Head>
-                <title>PreTalk</title>
+                <title>Holistic Life</title>
                 <link rel="icon"
-                      href="https://www.sti-consulting.de/wp-content/uploads/2020/04/sti_favicon_sti_logo_2-150x150.jpg"
+                      href=""
                       sizes="32x32"/>
                 <link rel="icon"
-                      href="https://www.sti-consulting.de/wp-content/uploads/2020/04/sti_favicon_sti_logo_2-300x300.jpg"
+                      href=""
                       sizes="192x192"/>
             </Head>
 
