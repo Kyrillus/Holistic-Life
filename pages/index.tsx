@@ -17,7 +17,7 @@ const LandingPage: NextPage = () => {
                       sizes="192x192"/>
             </Head>
 
-            <Navbar/>
+            {/*<Navbar/>*/}
             <Bewerbungsseite/>
             <Footer/>
         </div>
