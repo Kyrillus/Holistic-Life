@@ -20,8 +20,8 @@ function Navbar() {
                         <div className="lg:hidden"/>
                         <div className="flex px-2 lg:px-0">
                             <div className="flex flex-shrink-0 items-center">
-                                <img className="h-10 w-auto lg:h-12 cursor-pointer"
-                                     src=""
+                                <img className="h-96 py-8 w-auto cursor-pointer"
+                                     src="/holistic-life-logo.png"
                                      alt=""/>
                             </div>
                             <div className="hidden lg:ml-6 lg:flex">
