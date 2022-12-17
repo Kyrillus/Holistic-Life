@@ -1,11 +1,12 @@
 const socialIcons = [
     {file: "google_contact", name:"contact", height: "14"},
     {file: "gmail", name:"e-mail", height: "10"},
-    {file: "linkedin", name:"linkedin", height: "12"},
-    {file: "whatsapp", name:"whatsapp", height: "18"},
-    {file: "paypal", name:"paypal", height: "12"},
-    {file: "patreon", name:"patreon", height: "12"},
-    {file: "donate", name:"donate", height: "18"}];
+    {file: "linkedin", name:"linkedin", height: "12"}
+    // {file: "whatsapp", name:"whatsapp", height: "18"},
+    // {file: "paypal", name:"paypal", height: "12"},
+    // {file: "patreon", name:"patreon", height: "12"},
+    // {file: "donate", name:"donate", height: "18"}
+    ];
 
 import React from 'react';
 function Contact() {

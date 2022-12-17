@@ -3,7 +3,11 @@ import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
 
 function Navbar() {
-    const navItems = ["Dashboard", "Network", "Contact"];
+    const navItems = [
+        {name: "Dashboard", path:"/dashboard"},
+        {name:"Network", path: "/network"},
+        {name:"Contact", path: "/contact"}
+    ];
     const settingsItems = ["Your Profile", "Settings", "Sign Out"];
     const [profileClicked, setProfileClicked] = useState(false);
     const [burgerMenuClicked, setburgerMenuClicked] = useState(false);
@@ -27,9 +31,9 @@ function Navbar() {
                         </div>
                         {/* Menu Buttons */}
                         <div className="hidden lg:flex gap-10">
-                            {navItems.map(item => <a key={item}
+                            {navItems.map(item => <a key={item.name}
                                                      className="cursor-pointer inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base font-normal leading-5 text-white transition duration-150 ease-in-out hover:border-gray-300"
-                                                     onClick={async () => {await router.push('/' + item.toLowerCase())}}>{item}</a>)}
+                                                     onClick={async () => {await router.push(item.path)}}>{item.name}</a>)}
                         </div>
                         {/* Burger Menu (hidden on lg and upwards) */}
                         <div onClick={toggleBurgerMenu} className="flex items-center lg:hidden">
@@ -71,11 +75,11 @@ function Navbar() {
                     </div>
                 </div>
                 <div className={"lg:hidden  " + (burgerMenuClicked ? 'block' : 'hidden')}>
-                    <div className="pt-2 pb-3">
+                    <div className="pt-2 pb-3 cursor-pointer">
                         {navItems.map(item => <a
-                            key={item}
+                            key={item.name}
                             className="block py-2 pl-3 pr-4 text-base font-medium text-white transition duration-150 ease-in-out"
-                            href="#">{item}</a>
+                            onClick={async () => {await router.push(item.path)}}>{item.name}</a>
                         )}
 
                     </div>
