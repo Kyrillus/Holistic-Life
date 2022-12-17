@@ -5,7 +5,7 @@ function Footer() {
     const currentYear = new Date().getFullYear();
     return (
         <div>
-            <footer className="flex flex-row mt-auto h-24 w-full items-center justify-center border-t">
+            <footer className="flex flex-row mt-auto h-24 w-full items-center justify-center border-t border-uranianBlue">
                 <p className="text-gray-500">
                     © {currentYear} by RZ Productions. All Rights Reserved.
                 </p>
