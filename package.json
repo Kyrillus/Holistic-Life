@@ -13,7 +13,7 @@
     "test:watch": "jest --watch",
     "test": "jest",
     "format": "prettier -w .",
-    "format:check": "prettier -c .",
+    "format:check": "prettier -c ."
   },
   "dependencies": {
     "@react-three/drei": "^9.46.4",
