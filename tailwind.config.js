@@ -8,7 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'stiBlue': '#2d3a52'
+        'prussianBlue': '#2d3a52',
+        'uranianBlue': '#c3e5ff',
+        'aero': '#80bae6',
+        'blueCrayola': '#147AFF',
+        'sapphire': '#1053ab',
       }
     },
   },

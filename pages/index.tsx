@@ -1,8 +1,8 @@
 import type {NextPage} from 'next'
 import Head from 'next/head'
 import Navbar from "../components/navbar/navbar";
-import Bewerbungsseite from "../components/bewerbung/bewerbungsseite";
 import Footer from "../components/footer/footer";
+import Landing from "../components/landing/landing";
 
 const LandingPage: NextPage = () => {
     return (
@@ -17,9 +17,7 @@ const LandingPage: NextPage = () => {
                       sizes="192x192"/>
             </Head>
 
-            {/*<Navbar/>*/}
-            <Bewerbungsseite/>
-            <Footer/>
+            <Landing/>
         </div>
     )
 }
