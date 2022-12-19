@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
+import LightDarkModeSwitch from "./lightDarkModeSwitch";
 
 function Navbar() {
     const navItems = [
@@ -35,15 +36,15 @@ function Navbar() {
                                                      className="cursor-pointer inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base font-normal leading-5 text-white transition duration-150 ease-in-out hover:border-gray-300"
                                                      onClick={async () => {await router.push(item.path)}}>{item.name}</a>)}
                         </div>
+
                         {/* Burger Menu (hidden on lg and upwards) */}
                         <div onClick={toggleBurgerMenu} className="flex items-center lg:hidden">
                             <div className="text-white">
                                 <Hamburger/>
                             </div>
                         </div>
-                        <div className="hidden lg:ml-4 lg:flex lg:items-center">
-                            {/* Notification Bell */}
-                            <div className="relative ml-4 flex-shrink-0">
+                        <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center">
+                            <div className="relative flex-shrink-0">
                                 <div>
                                     <button
                                         onBlur={() => setProfileClicked(false)}
@@ -71,6 +72,7 @@ function Navbar() {
                                     </div>
                                 </div>
                             </div>
+                            <LightDarkModeSwitch/>
                         </div>
                     </div>
                 </div>
