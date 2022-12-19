@@ -26,7 +26,7 @@ function Navbar() {
                         <div className="lg:hidden"/>
                         <div className="flex px-2 lg:px-0">
                             <div className="flex flex-shrink-0 items-center">
-                               <h1 onClick={async () => await router.push('/')} className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
+                                <h1 onClick={async () => await router.push('/')} className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
                             </div>
                         </div>
                         {/* Menu Buttons */}
