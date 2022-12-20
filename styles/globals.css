@@ -7,5 +7,6 @@
 
 * {
     font-family: Comfortaa, serif;
+    overflow-x: hidden;
     @apply selection:bg-uranianBlue;
 }

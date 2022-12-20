@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div>
             <footer className="flex flex-row mt-auto h-24 w-full items-center justify-center border-t border-uranianBlue">
-                <p className="text-gray-500">
+                <p className="text-gray-500 text-center">
                     © {currentYear} by RZ Productions. All Rights Reserved.
                 </p>
             </footer>
