@@ -37,6 +37,7 @@ function Contact() {
                     <div className="flex flex-col items-center md:items-start gap-4 pt-4">
                         {socialIcons.map(item =>
                             <div
+                                key={item.name}
                                 className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 overflow-hidden items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
                                 <div className="w-16 flex justify-center">
                                     <img className={"h-" + item.height + " w-auto"}
