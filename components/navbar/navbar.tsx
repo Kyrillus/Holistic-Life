@@ -43,6 +43,7 @@ function Navbar() {
                                 <Hamburger/>
                             </div>
                         </div>
+                        <LightDarkModeSwitch/>
                         <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center">
                             <div className="relative flex-shrink-0">
                                 <div>
@@ -72,7 +73,7 @@ function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                            <LightDarkModeSwitch/>
+
                         </div>
                     </div>
                 </div>
