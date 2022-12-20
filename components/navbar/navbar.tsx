@@ -51,7 +51,7 @@ function Navbar() {
                                         onClick={toggleProfile}
                                         className={"flex rounded-full border-2 text-sm focus:outline-none " + (profileClicked ? "border-gray-100" : "border-transparent")}
                                         id="user-menu" aria-label="User menu" aria-haspopup="true">
-                                        <img className="h-10 w-10 rounded-full object-cover"
+                                        <img className="h-10 w-10 rounded-full object-cover object-top"
                                              src="/profile/reyan.jpg"
                                              alt=""/>
                                     </button>

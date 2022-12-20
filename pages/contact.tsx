@@ -17,7 +17,7 @@ function Contact() {
                 <div className="flex-col flex gap-4">
                     <div className="flex">
                         <div className="flex w-full gap-5">
-                            <img className="h-32 w-32 rounded-full object-cover" src="/profile/reyan.jpg"/>
+                            <img className="h-32 w-32 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
                             <div className="flex flex-col pt-4">
                                 <p className="font-extrabold">Reyan Zein</p>
                                 <div className="pt-4">
