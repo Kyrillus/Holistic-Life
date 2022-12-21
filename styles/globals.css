@@ -9,3 +9,20 @@
     font-family: Comfortaa, serif;
     @apply selection:bg-uranianBlue;
 }
+
+body {
+    @apply dark:bg-gray-900;
+}
+
+.noSelectionOrDrag {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+img {
+    @apply noSelectionOrDrag;
+}
