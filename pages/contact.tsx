@@ -16,11 +16,11 @@ function Contact() {
             <div className="flex justify-center py-10 px-4 dark:text-white select-none">
                 <div className="flex-col items-center flex gap-4">
                     <div className="flex justify-center">
-                        <div className="flex gap-5">
+                        <div className="flex justify-center gap-5">
                             <div className="flex w-1/3 md:w-auto">
                                 <img onContextMenu={(e) => {e.preventDefault()}} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
                             </div>
-                            <div className="flex flex-col justify-center w-2/3 md:w-full pt-2">
+                            <div className="flex flex-col w-52 justify-center md:w-full pt-2">
                                 <p className="font-extrabold">Reyan Zein</p>
                                 <div className="pt-4">
                                     <p className="text-sm">Founder &amp; CEO</p>
