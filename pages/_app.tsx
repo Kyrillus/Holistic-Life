@@ -7,7 +7,7 @@ import {ThemeProvider} from "next-themes";
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
-        <ThemeProvider attribute="class" enableSystem={true}>
+        <ThemeProvider attribute="class" enableSystem={false}>
             <Head>
                 <title>Holistic Life</title>
                 <link rel="icon"
