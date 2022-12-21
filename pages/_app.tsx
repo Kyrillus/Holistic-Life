@@ -4,8 +4,11 @@ import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import {ThemeProvider} from "next-themes";
+import {useState} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {
+    const [navbarOpen, setNavbarOpen] = useState(false);
+
     return (
         <ThemeProvider attribute="class" enableSystem={false}>
             <Head>
