@@ -21,7 +21,7 @@ function Navbar() {
 
     return (
         <div>
-            <nav className="bg-prussianBlue shadow">
+            <nav className="dark:bg-transparent bg-prussianBlue">
                 <div className="px-6 lg:px-32">
                     <div className="flex h-16 justify-between">
                         <div className="lg:hidden"/>
@@ -31,9 +31,9 @@ function Navbar() {
                             </div>
                         </div>
                         {/* Menu Buttons */}
-                        <div className="hidden lg:flex gap-10">
+                        <div className="hidden lg:flex lg:items-center gap-10">
                             {navItems.map(item => <a key={item.name}
-                                                     className="cursor-pointer inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-base font-normal leading-5 text-white transition duration-150 ease-in-out hover:border-gray-300"
+                                                     className="cursor-pointer inline-flex items-center h-[3.939rem] border-b-2 border-transparent px-1 pt-1 text-base font-normal leading-5 text-white transition duration-150 ease-in-out hover:border-white dark:hover:border-gray-300"
                                                      onClick={async () => {await router.push(item.path)}}>{item.name}</a>)}
                         </div>
 

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const socialIcons = [
     {file: "google_contact", name:"contact", height: "14"},
     {file: "gmail", name:"e-mail", height: "10"},
@@ -17,8 +19,10 @@ function Contact() {
                     <div className="flex justify-center">
                         <div className="flex justify-center gap-5">
                             <div className="flex w-1/3 md:w-auto">
-                                <img onContextMenu={(e) => {e.preventDefault()}} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
-                            </div>
+                                <div className="">
+                                    <Image width={3024} height={4032} onContextMenu={(e) => {e.preventDefault()}} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg" alt={"reyan"}/>
+                                </div>
+                               </div>
                             <div className="flex flex-col w-52 justify-center md:w-full pt-2">
                                 <p className="font-extrabold">Reyan Zein</p>
                                 <div className="pt-4">
