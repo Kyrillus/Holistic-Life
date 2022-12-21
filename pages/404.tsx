@@ -4,7 +4,7 @@ import Link from 'next/link'
 function FourOhFour()
 {
     return (
-        <div className="flex justify-center items-center min-h-[70vh]">
+        <div className="flex justify-center items-center min-h-[70vh] dark:text-white">
             <div className="flex flex-col gap-4">
                 <p>404 | Page not found!</p>
                 <div className="flex items-center gap-1 rounded-full border px-4 py-1 shadow">

@@ -13,12 +13,12 @@ function Contact() {
 
     return (
         <div className="">
-            <div className="flex justify-center py-10 px-4">
+            <div className="flex justify-center py-10 px-4 dark:text-white">
                 <div className="flex-col items-center flex gap-4">
                     <div className="flex justify-center">
                         <div className="flex gap-5">
                             <div className="flex w-1/3 md:w-auto">
-                                <img className="md:w-32 md:w-32 w-24 h-24  rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
+                                <img className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
                             </div>
                             <div className="flex flex-col justify-center w-2/3 md:w-full pt-2">
                                 <p className="font-extrabold">Reyan Zein</p>
@@ -32,7 +32,7 @@ function Contact() {
                     </div>
                     <div className="">
                         <button className="w-[20rem] sm:w-[22rem] md:w-96 h-12 px-5 rounded-full border text-gray-500">
-                            <p className="font-extrabold text-black">Exchange Contact</p>
+                            <p className="font-extrabold text-black dark:text-white">Exchange Contact</p>
                         </button>
                     </div>
                     <div className="flex flex-col items-center md:items-start gap-4 pt-4">
