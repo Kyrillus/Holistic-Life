@@ -12,7 +12,7 @@ function Contact() {
 
     return (
         <div className="">
-            <div className="flex justify-center py-10 px-4 dark:text-white">
+            <div className="flex justify-center py-10 px-4 dark:text-white select-none">
                 <div className="flex-col items-center flex gap-4">
                     <div className="flex justify-center">
                         <div className="flex gap-5">
@@ -38,7 +38,7 @@ function Contact() {
                         {socialIcons.map(item =>
                             <div
                                 key={item.name}
-                                className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 overflow-hidden items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
+                                className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
                                 <div className="w-16 flex justify-center">
                                     <img className={"h-" + item.height + " w-auto"}
                                          src={"/social-icons/" + item.file + ".png"}/>
