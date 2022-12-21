@@ -18,7 +18,7 @@ function Contact() {
                     <div className="flex justify-center">
                         <div className="flex gap-5">
                             <div className="flex w-1/3 md:w-auto">
-                                <img className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
+                                <img onContextMenu={(e) => {e.preventDefault()}} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg"/>
                             </div>
                             <div className="flex flex-col justify-center w-2/3 md:w-full pt-2">
                                 <p className="font-extrabold">Reyan Zein</p>
