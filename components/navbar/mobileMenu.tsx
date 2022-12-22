@@ -44,7 +44,7 @@ function MobileMenu({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpe
                             </a>
                         </li>
                     )}
-                    <div className="flex justify-center self-center w-96 border-t mt-5">
+                    <div className="flex justify-center self-center w-96 border-t border-t-2 mt-5">
                         <div className="pt-8">
                             <LightDarkModeSwitch sunColor={sunColorMobile} moonColor={moonColorMobile} size={80}/>
                         </div>

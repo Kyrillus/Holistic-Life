@@ -42,13 +42,13 @@ function Contact() {
                         {socialIcons.map(item =>
                             <div
                                 key={item.name}
-                                className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
+                                className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
                                 <div className="w-16 flex justify-center">
                                     <img className={"h-" + item.height + " w-auto"}
                                          src={"/social-icons/" + item.file + ".png"}/>
                                 </div>
                                 <div className="flex grow justify-center">
-                                    <p className="font-normal">{item.name}</p>
+                                    <p className="font-medium group-hover:font-semibold dark:group-hover:font-extrabold">{item.name}</p>
                                 </div>
 
                             </div>

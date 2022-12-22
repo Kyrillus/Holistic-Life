@@ -5,6 +5,8 @@ export const navItems = [
     {name:"Contact", path: "/contact"}
 ];
 
+export const profileMenu = ["Profile", "Settings"];
+
 export const moonColorDesktop = "#C9C6C6FF";
 export const sunColorDesktop = "#51EBF3";
 
