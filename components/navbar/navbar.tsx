@@ -1,21 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
 import LightDarkModeSwitch from "./lightDarkModeSwitch";
+import {moonColorDesktop, navItems, sunColorDesktop} from "../../types/vars";
 
-function Navbar() {
-    const navItems = [
-        {name: "Dashboard", path:"/dashboard"},
-        {name:"Network", path: "/network"},
-        {name:"Contact", path: "/contact"}
-    ];
+function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
     const settingsItems = ["Your Profile", "Settings", "Sign Out"];
     const [profileClicked, setProfileClicked] = useState(false);
-    const [burgerMenuClicked, setburgerMenuClicked] = useState(false);
-    const [notificationBellClicked, setNotificationBellClicked] = useState(false);
-    const toggleBurgerMenu = () => setburgerMenuClicked(!burgerMenuClicked);
+    const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
     const toggleProfile = () => setProfileClicked(!profileClicked);
-    const toggleNotificationBellClicked = () => setNotificationBellClicked(!notificationBellClicked);
 
     const router = useRouter();
 
@@ -24,9 +17,13 @@ function Navbar() {
             <nav className="dark:bg-transparent bg-prussianBlue">
                 <div className="px-6 lg:px-32">
                     <div className="flex h-16 justify-between">
-                        <div className="lg:hidden"/>
+                        <div className="flex items-center invisible z-[999] lg:hidden">
+                            <div className="text-white">
+                                <Hamburger/>
+                            </div>
+                        </div>
                         <div className="flex px-2 lg:px-0">
-                            <div className="flex flex-shrink-0 items-center">
+                            <div className="flex flex-shrink-0 items-center  z-[999]">
                                 <h1 onClick={async () => await router.push('/')} className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
                             </div>
                         </div>
@@ -38,14 +35,14 @@ function Navbar() {
                         </div>
 
                         {/* Burger Menu (hidden on lg and upwards) */}
-                        <div onClick={toggleBurgerMenu} className="flex items-center lg:hidden">
+                        <div onClick={toggleBurgerMenu} className="flex items-center z-[999] lg:hidden">
                             <div className="text-white">
-                                <Hamburger/>
+                                <Hamburger toggled={navbarOpen} toggle={setNavbarOpen}/>
                             </div>
                         </div>
 
                         <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center">
-                            <LightDarkModeSwitch/>
+                            <LightDarkModeSwitch sunColor={sunColorDesktop} moonColor={moonColorDesktop} size={17}/>
                             <div className="relative flex-shrink-0">
                                 <div>
                                     <button
@@ -74,16 +71,6 @@ function Navbar() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className={"lg:hidden  " + (burgerMenuClicked ? 'block' : 'hidden')}>
-                    <div className="pt-2 pb-3 cursor-pointer">
-                        {navItems.map(item => <a
-                            key={item.name}
-                            className="block py-2 pl-3 pr-4 text-base font-medium text-white transition duration-150 ease-in-out"
-                            onClick={async () => {await router.push(item.path)}}>{item.name}</a>
-                        )}
-
                     </div>
                 </div>
             </nav>

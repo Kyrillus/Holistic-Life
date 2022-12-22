@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {RiMoonClearLine} from 'react-icons/ri'
-import {TbSun} from 'react-icons/tb'
 import {useTheme} from "next-themes";
 import {DarkModeSwitch} from "react-toggle-dark-mode";
 
-function LightDarkModeSwitch() {
+function LightDarkModeSwitch({size, sunColor, moonColor}: { size: number, sunColor: string, moonColor: string }) {
     const {theme, setTheme} = useTheme()
     const [mounted, setMounted] = useState(false);
 
@@ -14,12 +12,13 @@ function LightDarkModeSwitch() {
 
     return (
         <>
-            <DarkModeSwitch size={17} sunColor={"#51EBF3"} moonColor={"#C9C6C6FF"} checked={theme !== 'light'}
-                            onChange={() => {
-                                setTheme(theme === 'light' ? 'dark' : 'light')
-                            }}>
-
-            </DarkModeSwitch>
+            {!mounted ?
+                (<div className="w-5 h-5"/>) :
+                (<DarkModeSwitch size={size} sunColor={sunColor} moonColor={moonColor} checked={theme !== 'light'}
+                                 onChange={() => {
+                                     setTheme(theme === 'light' ? 'dark' : 'light')
+                                 }}>
+                </DarkModeSwitch>)}
 
             {/*<button className="flex items-center justify-center rounded-lg p-1 hover:opacity-80 h-fit w-fit">*/}
             {/*    {!mounted ?*/}
