@@ -23,8 +23,11 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                             </div>
                         </div>
                         <div className="flex px-2 lg:px-0">
-                            <div className="flex flex-shrink-0 items-center  z-[999]">
-                                <h1 onClick={async () => await router.push('/')} className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
+                            <div className="flex flex-shrink-0 items-center z-[999]">
+                                <h1 onClick={async () => {
+                                    await router.push('/')
+                                    setNavbarOpen(false)
+                                }} className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
                             </div>
                         </div>
                         {/* Menu Buttons */}
@@ -35,7 +38,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                         </div>
 
                         {/* Burger Menu (hidden on lg and upwards) */}
-                        <div onClick={toggleBurgerMenu} className="flex items-center z-[999] lg:hidden">
+                        <div onClick={toggleBurgerMenu} className="flex items-center z-[999] select-none lg:hidden">
                             <div className="text-white">
                                 <Hamburger toggled={navbarOpen} toggle={setNavbarOpen}/>
                             </div>

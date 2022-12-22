@@ -35,7 +35,7 @@ function MobileMenu({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpe
                 }`}>
                 <ul className="w-full flex flex-col gap-8  text-center">
                     {navItems.map( (item) =>
-                        <li className="flex hover:cursor-pointer w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-100 transition-all duration-200 ease-in-out">
+                        <li className="flex hover:cursor-pointer w-full hover:scale-110 leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-100 transition-all duration-200 ease-in-out">
                             <a onClick={async () => {
                                 await router.push(item.path);
                                 setNavbarOpen(false);
