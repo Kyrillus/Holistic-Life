@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
 import LightDarkModeSwitch from "./lightDarkModeSwitch";
-import {moonColorDesktop, navItems, sunColorDesktop} from "../../types/vars";
+import {moonColorDesktop, navItems, profileMenu, sunColorDesktop} from "../../types/vars";
+import {IoMdContact} from "react-icons/io";
+import {FcSettings} from "react-icons/fc";
 
 function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
-    const settingsItems = ["Your Profile", "Settings", "Sign Out"];
     const [profileClicked, setProfileClicked] = useState(false);
     const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
     const toggleProfile = () => setProfileClicked(!profileClicked);
@@ -60,15 +61,15 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                 </div>
                                 {/* Settings Menu */}
                                 <div
-                                    className={"absolute right-0 mt-2 z-10 w-48 origin-top-right rounded-md shadow-lg " + (profileClicked ? 'block' : 'hidden')}>
-                                    <div className="shadow-xs rounded-md bg-white py-1" role="menu"
+                                    className={"absolute right-0 mt-2 z-10 w-38 origin-top-right rounded-md shadow-lg " + (profileClicked ? 'block' : 'hidden')}>
+                                    <div className="shadow-xl rounded-md bg-white overflow-hidden" role="menu"
                                          aria-orientation="vertical" aria-labelledby="user-menu">
-                                        {settingsItems.map(item =>
-                                            <a
-                                                key={item}
-                                                className="block px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
-                                                href="#" role="menuitem"> {item}
-                                            </a>
+                                        {profileMenu.map(item =>
+                                                <a
+                                                    key={item}
+                                                    className="block px-4 py-2 text-sm leading-5 text-gray-700 transition-all duration-150 ease-in-out hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                                                    href="#" role="menuitem"> {item}
+                                                </a>
                                         )}
                                     </div>
                                 </div>
