@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import {ThemeProvider} from "next-themes";
 import {useState} from "react";
+import MobileMenu from "../components/navbar/mobileMenu";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
@@ -20,7 +21,8 @@ function MyApp({Component, pageProps}: AppProps) {
                       href=""
                       sizes="192x192"/>
             </Head>
-            <Navbar/>
+            <Navbar navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}/>
+            <MobileMenu navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}/>
             <Component {...pageProps} />
             <Footer/>
         </ThemeProvider>
