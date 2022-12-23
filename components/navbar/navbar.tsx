@@ -3,8 +3,6 @@ import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
 import LightDarkModeSwitch from "./lightDarkModeSwitch";
 import {moonColorDesktop, navItems, profileMenu, sunColorDesktop} from "../../types/vars";
-import {IoMdContact} from "react-icons/io";
-import {FcSettings} from "react-icons/fc";
 
 function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
     const [profileClicked, setProfileClicked] = useState(false);
@@ -61,7 +59,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                 </div>
                                 {/* Settings Menu */}
                                 <div
-                                    className={"absolute right-0 mt-2 z-10 w-38 origin-top-right rounded-md shadow-lg " + (profileClicked ? 'block' : 'hidden')}>
+                                    className={"absolute right-0 mt-2 z-10 w-38 origin-top-right rounded-md shadow-lg select-none " + (profileClicked ? 'block' : 'hidden')}>
                                     <div className="shadow-xl rounded-md bg-white overflow-hidden" role="menu"
                                          aria-orientation="vertical" aria-labelledby="user-menu">
                                         {profileMenu.map(item =>
