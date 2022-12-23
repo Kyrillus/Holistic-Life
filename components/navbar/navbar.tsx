@@ -3,6 +3,7 @@ import {Fade as Hamburger} from 'hamburger-react'
 import {useRouter} from "next/router";
 import LightDarkModeSwitch from "./lightDarkModeSwitch";
 import {moonColorDesktop, navItems, profileMenu, sunColorDesktop} from "../../types/vars";
+import Image from "next/image";
 
 function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
     const [profileClicked, setProfileClicked] = useState(false);
@@ -52,9 +53,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                         onClick={toggleProfile}
                                         className={"flex rounded-full border-2 text-sm focus:outline-none " + (profileClicked ? "border-gray-100" : "border-transparent")}
                                         id="user-menu" aria-label="User menu" aria-haspopup="true">
-                                        <img className="h-10 w-10 rounded-full object-cover object-top"
-                                             src="/profile/reyan.jpg"
-                                             alt=""/>
+                                        <Image width={3024} height={4032} onContextMenu={(e) => {e.preventDefault()}} className="h-10 w-10 rounded-full object-cover object-top" src="/profile/reyan.jpg" alt={"reyan"}/>
                                     </button>
                                 </div>
                                 {/* Settings Menu */}
