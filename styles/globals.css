@@ -6,14 +6,22 @@
 @tailwind utilities;
 
 * {
-    font-family: Comfortaa, serif;
     @apply selection:bg-uranianBlue;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
+@font-face {
+
+}
+
+.monoFont {
+    @apply font-mono !important;
+}
+
 body {
+    font-family: Comfortaa, serif;
     @apply dark:bg-gray-900;
 }
 
