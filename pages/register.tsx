@@ -1,17 +1,14 @@
 import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
-import {useRouter} from "next/router";
 
-function Login() {
-    const router = useRouter();
-
+function Register() {
     return (
         <section className="relative overflow-hidden py-16 select-none">
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
                         <div className="mx-auto rounded-xl py-20 text-center dark:bg-slate-800 shadow-gray-400 dark:shadow-black shadow-2xl md:max-w-xl">
-                            <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Log in to your
+                            <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create your
                                 account</h2>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="w-full p-2 pb-2">
@@ -30,12 +27,18 @@ function Login() {
                                 <div className="w-full p-2">
                                     <div className="flex justify-between items-center">
                                         <p className="p-1 text-start font-medium">Password</p>
-                                        <p className="text-[0.65rem] font-bold cursor-pointer select-none text-gray-400 dark:text-quickSilver pt-4 pr-1">Forgot
-                                            your password?</p>
                                     </div>
                                     <input
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
                                         type="password" placeholder="password" name="password"/>
+                                </div>
+                                <div className="w-full p-2">
+                                    <div className="flex justify-between items-center">
+                                        <p className="p-1 text-start font-medium">Confirm Password</p>
+                                    </div>
+                                    <input
+                                        className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
+                                        type="password" placeholder="confirm" name="confirm"/>
                                 </div>
                                 <div className="w-full p-2">
                                     <div className="group relative">
@@ -47,19 +50,16 @@ function Login() {
                                                 className="relative overflow-hidden rounded-md border bg-transparent dark:bg-gray-900 bg-uranianBlue py-4 px-9">
                                                 <div
                                                     className="absolute top-0 left-0 h-full w-full -translate-x-full transform bg-gradient-to-r from-blueCrayola via-sky-500 to-fluorescentBlue transition duration-500 ease-in-out group-hover:-translate-x-0"/>
-                                                <p className="relative z-10 font-medium dark:text-white  group-hover:text-white transition-[color] duration-1000 group-hover:font-extrabold">Log
-                                                    in</p>
+                                                <p className="relative z-10 font-medium dark:text-white  group-hover:text-white transition-[color] duration-1000 group-hover:font-extrabold">Create</p>
                                             </div>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div className="border-t p-2 pt-6 w-5/6 mx-auto px-2 -m-2"/>
-                            <p className="font-regular text-gray-600 dark:text-white cursor-pointer">
-                                <span>Don&rsquo;t have an account? </span>
-                                <a className="text-blueCrayola rounded-lg p-1 font-bold pl-1" onClick={async () => {
-                                    await router.push("/register");
-                                }}>Create Account</a>
+                            <p className="font-regular text-gray-600 dark:text-white">
+                                <span>Don&rsquo;t xxx </span>
+                                <a className="text-blueCrayola rounded-lg p-1 font-bold pl-1" href="#">xxx</a>
                             </p>
                         </div>
                     </div>
@@ -70,4 +70,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
