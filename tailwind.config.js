@@ -26,6 +26,7 @@ module.exports = {
                 // unique color palette
                 'quickSilver': '#A6A6A6',
                 'silver': '#c9c6c6',
+                'fluorescentBlue': '#48F0E2'
             }
         },
     },

@@ -46,8 +46,14 @@ function MobileMenu({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpe
                             </a>
                         </li>
                     )}
-                    <div className="flex justify-center self-center w-96 border-t border-t-2 mt-5">
-                        <div className="pt-8">
+                    <div className="flex flex-col justify-center items-center self-center w-96 border-t border-t-2 mt-5">
+                        <div className="pt-5">
+                            <p onClick={async () => {
+                                await router.push("/login");
+                                setNavbarOpen(false);
+                            }} className="text-white border rounded-xl p-2 text-4xl border-4 border-white cursor-pointer">log in</p>
+                        </div>
+                        <div className="pt-5">
                             <LightDarkModeSwitch sunColor={sunColorMobile} moonColor={moonColorMobile} size={80}/>
                         </div>
                     </div>

@@ -12,10 +12,6 @@
     text-rendering: optimizeLegibility;
 }
 
-@font-face {
-
-}
-
 .monoFont {
     @apply font-mono !important;
 }
