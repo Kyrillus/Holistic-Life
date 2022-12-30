@@ -52,7 +52,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                             <div
                                 onClick={async () => {
                                     await router.push('/login')}}
-                                className="flex gap-2 group cursor-pointer bg-gray-100 bg-opacity-10 hover:bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-full py-1 px-3 text-white justify-center items-center">
+                                className="flex select-none gap-2 group cursor-pointer bg-gray-100 bg-opacity-10 hover:bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-full py-1 px-3 text-white justify-center items-center">
                                 <button className="font-light text-sm">Log in</button>
                                 <ArrowLink/>
                             </div>

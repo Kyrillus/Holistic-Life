@@ -12,6 +12,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            transitionProperty: {
+                'scale': 'scale',
+            },
             fontWeight: ['hover'],
             colors: {
                 // main color palette https://coolors.co/ffffff-c3e5ff-80bae6-51ebf3-0ea5e9-147aff-1053ab-2d3a52-a6a8ab
