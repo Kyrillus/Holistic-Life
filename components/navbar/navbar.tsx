@@ -14,7 +14,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
     const router = useRouter();
 
     return (
-        <div>
+        <div className="select-none">
             <nav className="dark:bg-transparent bg-prussianBlue font-[Comfortaa]">
                 <div className="px-6 lg:px-32">
                     <div className="flex h-16 justify-between">
