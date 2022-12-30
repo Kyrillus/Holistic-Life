@@ -43,7 +43,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                         {/* Burger Menu (hidden on lg and upwards) */}
                         <div onClick={toggleBurgerMenu} className="flex items-center z-[999] select-none lg:hidden">
                             <div className="text-white">
-                                <Hamburger toggled={navbarOpen} toggle={setNavbarOpen}/>
+                                <Hamburger size={20} toggled={navbarOpen} toggle={setNavbarOpen}/>
                             </div>
                         </div>
 
