@@ -4,7 +4,7 @@ import {socialIcons} from "../types/vars";
 
 function Contact() {
     return (
-        <div className="">
+        <div className="select-none">
             <div className="flex justify-center py-10 px-4 dark:text-white select-none">
                 <div className="flex-col items-center flex gap-4">
                     <div className="flex justify-center">

@@ -1,6 +1,7 @@
 import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
+import {fetchData} from '../lib/userAPI';
 
 function Login() {
     const router = useRouter();
@@ -10,9 +11,11 @@ function Login() {
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
-                        <div className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
+                        <div
+                            className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
                             <div className="flex justify-center items-center w-full">
-                                <h2 className="font-heading pb-10 text-2xl md:text-3xl font-bold text-prussianBlue dark:text-white md:w-full">Log in to your
+                                <h2 className="font-heading pb-10 text-2xl md:text-3xl font-bold text-prussianBlue dark:text-white md:w-full">Log
+                                    in to your
                                     account</h2>
                             </div>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
@@ -20,7 +23,8 @@ function Login() {
                                     <div
                                         className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
                                         <FcGoogle size={25}/>
-                                        <p className="font-medium dark:text-white transition-[color] duration-1000">Continue with Google</p>
+                                        <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
+                                            with Google</p>
                                     </div>
                                 </div>
                                 <div className="w-full p-2 pt-4">
@@ -70,6 +74,15 @@ function Login() {
         </section>
 
     );
+}
+
+export async function getServerSideProps() {
+    const users = await fetchData('users');
+    return {
+        props: {
+            users,
+        },
+    };
 }
 
 export default Login;
