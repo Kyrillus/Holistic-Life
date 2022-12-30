@@ -6,7 +6,7 @@ function Login() {
     const router = useRouter();
 
     return (
-        <section className="relative overflow-hidden py-16 select-none">
+        <section className="relative overflow-hidden md:py-16 select-none">
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
