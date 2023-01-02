@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
 import {fetchData} from '../lib/userAPI';
 
 function Login() {
     const router = useRouter();
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const verifyUser = async () => {
+        console.log(email);
+        console.log(password);
+        fetchData('users')
+            .then(user => {console.log(user)})
+            .catch(() => {console.log("an error occurred")})
+    }
     return (
         <section className="relative overflow-hidden md:py-16 select-none">
             <div className="container relative z-10 mx-auto px-4">
@@ -30,6 +39,7 @@ function Login() {
                                 <div className="w-full p-2 pt-4">
                                     <p className="p-1 text-start font-medium">E-Mail</p>
                                     <input
+                                        onChange={(e) => setEmail(e.target.value)}
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
                                         type="text" placeholder="email address" name="email"/>
                                 </div>
@@ -40,6 +50,7 @@ function Login() {
                                             your password?</p>
                                     </div>
                                     <input
+                                        onChange={(e) => setEmail(e.target.value)}
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
                                         type="password" placeholder="password" name="password"/>
                                 </div>
@@ -48,6 +59,7 @@ function Login() {
                                         <div
                                             className="absolute top-0 left-0 h-full w-full rounded-lg bg-white opacity-0  duration-300 ease-out group-hover:opacity-50"/>
                                         <button
+                                            onClick={verifyUser}
                                             className="font-heading w-full overflow-hidden rounded-md  text-base font-medium text-black">
                                             <div
                                                 className="relative overflow-hidden rounded-md border bg-transparent dark:bg-gray-900 bg-uranianBlue py-4 px-9">
@@ -77,7 +89,7 @@ function Login() {
 }
 
 export async function getServerSideProps() {
-    const users = await fetchData('users');
+    const users = null;
     return {
         props: {
             users,
