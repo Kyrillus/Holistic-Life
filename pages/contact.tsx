@@ -1,19 +1,8 @@
 import Image from "next/image";
-import {useRouter} from "next/router";
-
-const socialIcons = [
-    {file: "google_contact", name:"contact", height: "14"},
-    {file: "gmail", name:"e-mail", height: "10"},
-    {file: "linkedin", name:"linkedin", height: "12"},
-    {file: "whatsapp", name:"whatsapp", height: "18"},
-    {file: "paypal", name:"paypal", height: "12"},
-    {file: "patreon", name:"patreon", height: "12"},
-    {file: "donate", name:"donate", height: "18"}];
-
 import React from 'react';
-function Contact() {
-    const router = useRouter();
+import {socialIcons} from "../types/vars";
 
+function Contact() {
     return (
         <div className="">
             <div className="flex justify-center py-10 px-4 dark:text-white select-none">
@@ -22,9 +11,12 @@ function Contact() {
                         <div className="flex justify-center gap-5">
                             <div className="flex w-1/3 md:w-auto">
                                 <div className="">
-                                    <Image width={3024} height={4032} onContextMenu={(e) => {e.preventDefault()}} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top" src="/profile/reyan.jpg" alt={"reyan"}/>
+                                    <Image width={3024} height={4032} onContextMenu={(e) => {
+                                        e.preventDefault()
+                                    }} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top"
+                                           src="/profile/reyan.jpg" alt={"reyan"}/>
                                 </div>
-                               </div>
+                            </div>
                             <div className="flex flex-col w-52 justify-center md:w-full pt-2">
                                 <p className="font-extrabold">Reyan Zein</p>
                                 <div className="pt-4">
@@ -42,19 +34,18 @@ function Contact() {
                     </div>
                     <div className="flex flex-col items-center md:items-start gap-4 pt-4">
                         {socialIcons.map(item =>
-                            <div
-                                onClick={async () => {await router.push('/vcard.vcf')}}
-                                key={item.name}
-                                className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
-                                <div className="w-16 flex justify-center">
-                                    <img className={"h-" + item.height + " w-auto"}
-                                         src={"/social-icons/" + item.file + ".png"}/>
-                                </div>
-                                <div className="flex grow justify-center">
-                                    <p className="font-medium group-hover:font-semibold dark:group-hover:font-extrabold">{item.name}</p>
-                                </div>
+                                <a key={item.name} href={item.link} target={item.newTab ? "_blank" : ""}>
+                                    <div className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
+                                        <div className="w-16 flex justify-center">
+                                            <img className={"h-" + item.height + " w-auto"}
+                                                 src={"/social-icons/" + item.file + ".png"}/>
+                                        </div>
+                                        <div className="flex grow justify-center">
+                                            <p className="font-medium group-hover:font-semibold dark:group-hover:font-extrabold">{item.name}</p>
+                                        </div>
 
-                            </div>
+                                    </div>
+                                </a>
                         )}
                     </div>
 
