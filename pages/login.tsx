@@ -1,19 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
-import {fetchData} from '../lib/userAPI';
+import {loginUser} from '../lib/userAPI';
+import useUserStore from "../lib/useStore";
 
 function Login() {
     const router = useRouter();
+    const userSate = useUserStore((state) => state.userState);
+    const setUser = useUserStore((state) => state.login);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+
+    }, []);
+
     const verifyUser = async () => {
         console.log(email);
         console.log(password);
-        fetchData('users')
-            .then(user => {console.log(user)})
-            .catch(() => {console.log("an error occurred")})
+        loginUser(email, password)
+            .then(async data => {
+                setUser(data.jwt);
+                localStorage.setItem("user", data.jwt);
+                await router.push("/");
+            })
+            .catch(() => {
+                console.log("error")
+            })
     }
     return (
         <section className="relative overflow-hidden md:py-16 select-none">
@@ -50,7 +63,7 @@ function Login() {
                                             your password?</p>
                                     </div>
                                     <input
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
                                         type="password" placeholder="password" name="password"/>
                                 </div>
