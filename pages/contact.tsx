@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {useRouter} from "next/router";
 
 const socialIcons = [
     {file: "google_contact", name:"contact", height: "14"},
@@ -11,6 +12,7 @@ const socialIcons = [
 
 import React from 'react';
 function Contact() {
+    const router = useRouter();
 
     return (
         <div className="">
@@ -41,6 +43,7 @@ function Contact() {
                     <div className="flex flex-col items-center md:items-start gap-4 pt-4">
                         {socialIcons.map(item =>
                             <div
+                                onClick={async () => {await router.push('/vcard.vcf')}}
                                 key={item.name}
                                 className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
                                 <div className="w-16 flex justify-center">
