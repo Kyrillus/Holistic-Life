@@ -1,5 +1,5 @@
-const API_URL = process.env.API_URL;
-const BEARER_TOKEN = process.env.BEARER_TOKEN;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
 export async function fetchData(endpoint: string) {
     try {
@@ -11,10 +11,9 @@ export async function fetchData(endpoint: string) {
         if (response.ok) {
             return response.json();
         } else {
-            throw new Error(`Error fetching ${endpoint}`);
+            return Promise.reject("error fetching data");
         }
     } catch (err) {
-        console.error(err);
-        throw err;
+        return Promise.reject("error fetching data");
     }
 }
