@@ -1,5 +1,6 @@
 import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
+import Link from "next/link";
 
 function Register() {
     return (
@@ -7,7 +8,7 @@ function Register() {
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
-                        <div className="mx-auto rounded-xl py-20 text-center dark:bg-slate-800 shadow-gray-400 dark:shadow-black shadow-2xl md:max-w-xl">
+                        <div className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
                             <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create your
                                 account</h2>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
@@ -18,6 +19,21 @@ function Register() {
                                         <p className="font-medium dark:text-white transition-[color] duration-1000">Continue with Google</p>
                                     </div>
                                 </div>
+                                <div className="flex flex-row">
+                                    <div className="w-full p-2 pt-4 w-1/2">
+                                        <p className="p-1 text-start font-medium">First Name</p>
+                                        <input
+                                            className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
+                                            type="text" placeholder="first name" name="firstname"/>
+                                    </div>
+                                    <div className="w-full p-2 pt-4 w-1/2">
+                                        <p className="p-1 text-start font-medium">Last Name</p>
+                                        <input
+                                            className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
+                                            type="text" placeholder="last name" name="lastname"/>
+                                    </div>
+                                </div>
+
                                 <div className="w-full p-2 pt-4">
                                     <p className="p-1 text-start font-medium">E-Mail</p>
                                     <input
@@ -38,7 +54,7 @@ function Register() {
                                     </div>
                                     <input
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
-                                        type="password" placeholder="confirm" name="confirm"/>
+                                        type="password" autoComplete="off" placeholder="confirm" name="confirm"/>
                                 </div>
                                 <div className="w-full p-2">
                                     <div className="group relative">
@@ -57,10 +73,14 @@ function Register() {
                                 </div>
                             </div>
                             <div className="border-t p-2 pt-6 w-5/6 mx-auto px-2 -m-2"/>
-                            <p className="font-regular text-gray-600 dark:text-white">
-                                <span>Don&rsquo;t xxx </span>
-                                <a className="text-blueCrayola rounded-lg p-1 font-bold pl-1" href="#">xxx</a>
-                            </p>
+                            <div className="px-20">
+                                <p className="font-regular text-sm text-gray-600 dark:text-white">
+                                    <span>By clicking “Create Account”, you agree to our <br/>
+                                        <Link href={"/terms-of-service"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank">terms of service</a></Link>,
+                                        <Link href={"/privacy-policy"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank"> privacy policy</a></Link> and
+                                        <Link href={"/cookie-use"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank"> cookie use</a></Link></span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
