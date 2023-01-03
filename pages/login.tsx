@@ -3,8 +3,10 @@ import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
 import {loginUser} from '../lib/userAPI';
 import useUserStore from "../lib/useStore";
+import {signIn} from "next-auth/react";
 
 function Login() {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const router = useRouter();
     const userSate = useUserStore((state) => state.userState);
     const setUser = useUserStore((state) => state.login);
@@ -42,7 +44,7 @@ function Login() {
                             </div>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="w-full p-2 pb-2">
-                                    <div
+                                    <div onClick={ () => signIn()}
                                         className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
                                         <FcGoogle size={25}/>
                                         <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
