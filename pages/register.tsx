@@ -80,7 +80,7 @@ function Register() {
                                         {legalLinks.map(((legal, index) =>
                                             <>
                                                 <Link className="text-blueCrayola rounded-lg font-bold" href={legal.href}> {legal.name}</Link>
-                                                {index === legalLinks.length - 1 ? "" : (index === legalLinks.length -2 ? " and" : ",")}
+                                                {index === legalLinks.length - 1 ? "." : (index === legalLinks.length -2 ? " and" : ",")}
                                             </>
                                         ))}
                                 </p>
