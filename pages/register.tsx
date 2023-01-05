@@ -76,9 +76,9 @@ function Register() {
                             <div className="px-20">
                                 <p className="font-regular text-sm text-gray-600 dark:text-white">
                                     <span>By clicking “Create Account”, you agree to our <br/>
-                                        <Link href={"/terms-of-service"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank">terms of service</a></Link>,
-                                        <Link href={"/privacy-policy"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank"> privacy policy</a></Link> and
-                                        <Link href={"/cookie-use"}> <a className="text-blueCrayola rounded-lg font-bold" target="_blank"> cookie use</a></Link></span>
+                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link>,
+                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link> and
+                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link></span>
                                 </p>
                             </div>
                         </div>

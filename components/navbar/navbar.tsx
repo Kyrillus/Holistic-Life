@@ -7,13 +7,13 @@ import ArrowLink from "../links/ArrowLink";
 import Image from 'next/image';
 import useUserStore from "../../lib/useStore";
 
-function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
+function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any}) {
     const [profileClicked, setProfileClicked] = useState(false);
     const user = useUserStore((state) => state.user);
     const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     useEffect(() => {
-        setIsLoggedIn(localStorage.getItem("user") != null && localStorage.getItem("user")!.length > 0);
+        setIsLoggedIn((localStorage.getItem("user") != null && localStorage.getItem("user")!.length > 0));
     }, [user])
 
     const toggleProfile = () => setProfileClicked(!profileClicked);
@@ -68,7 +68,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                 <Image width={3024} height={4032} onContextMenu={(e) => {
                                                     e.preventDefault()
                                                 }} className="h-10 w-10 rounded-full object-cover object-top"
-                                                       src="/profile/profileDefault.jpg" alt={"default"}/>
+                                                       src={"/profile/profileDefault.jpg"} alt={"default"}/>
                                             </button>
                                         </div>
                                         {/* Settings Menu */}
@@ -116,3 +116,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
 }
 
 export default Navbar;
+
+export async function getServerSideProps(context: any) {
+
+}
