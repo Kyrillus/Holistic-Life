@@ -6,15 +6,18 @@ import {moonColorDesktop, navItems, profileSettings, sunColorDesktop} from "../.
 import ArrowLink from "../links/ArrowLink";
 import Image from 'next/image';
 import useUserStore from "../../lib/useStore";
+import {useSession} from "next-auth/react";
 
 function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any}) {
     const [profileClicked, setProfileClicked] = useState(false);
-    const user = useUserStore((state) => state.user);
     const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { data, status } = useSession()
+
     useEffect(() => {
-        setIsLoggedIn((localStorage.getItem("user") != null && localStorage.getItem("user")!.length > 0));
-    }, [user])
+        if (status === "authenticated"){
+
+        }
+    }, [])
 
     const toggleProfile = () => setProfileClicked(!profileClicked);
     const router = useRouter();
@@ -57,7 +60,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
 
                         <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center">
                             <LightDarkModeSwitch sunColor={sunColorDesktop} moonColor={moonColorDesktop} size={17}/>
-                            {isLoggedIn ? (
+                            {status === "authenticated" ? (
                                     <div className="relative flex-shrink-0">
                                         <div>
                                             <button
@@ -68,7 +71,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                 <Image width={3024} height={4032} onContextMenu={(e) => {
                                                     e.preventDefault()
                                                 }} className="h-10 w-10 rounded-full object-cover object-top"
-                                                       src={"/profile/profileDefault.jpg"} alt={"default"}/>
+                                                       src={data?.user?.image ? data?.user?.image : "/profile/profileDefault.jpg"} alt={"default"}/>
                                             </button>
                                         </div>
                                         {/* Settings Menu */}
