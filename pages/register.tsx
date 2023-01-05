@@ -1,6 +1,7 @@
 import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import Link from "next/link";
+import {legalLinks} from "../types/vars";
 
 function Register() {
     return (
@@ -75,10 +76,13 @@ function Register() {
                             <div className="border-t p-2 pt-6 w-5/6 mx-auto px-2 -m-2"/>
                             <div className="px-20">
                                 <p className="font-regular text-sm text-gray-600 dark:text-white">
-                                    <span>By clicking “Create Account”, you agree to our <br/>
-                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link>,
-                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link> and
-                                        <Link className="text-blueCrayola rounded-lg font-bold" href={""}> </Link></span>
+                                    <span>By clicking “Create Account”, you agree to our <br/></span>
+                                        {legalLinks.map(((legal, index) =>
+                                            <>
+                                                <Link className="text-blueCrayola rounded-lg font-bold" href={legal.href}> {legal.name}</Link>
+                                                {index === legalLinks.length - 1 ? "" : (index === legalLinks.length -2 ? " and" : ",")}
+                                            </>
+                                        ))}
                                 </p>
                             </div>
                         </div>
