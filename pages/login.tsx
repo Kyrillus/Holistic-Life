@@ -3,7 +3,8 @@ import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
 import {loginUser} from '../lib/userAPI';
 import useUserStore from "../lib/useStore";
-import {signIn} from "next-auth/react";
+import {getSession, signIn} from "next-auth/react";
+import Link from "next/link";
 
 function Login() {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -21,10 +22,8 @@ function Login() {
         console.log(email);
         console.log(password);
         loginUser(email, password)
-            .then(async data => {
-                setUser(data.jwt);
-                localStorage.setItem("user", data.jwt);
-                await router.push("/");
+            .then(async () => {
+                await signIn("credentials", {username: email, password: password});
             })
             .catch(() => {
                 console.log("error")
@@ -44,8 +43,8 @@ function Login() {
                             </div>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="w-full p-2 pb-2">
-                                    <div onClick={ () => signIn()}
-                                        className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
+                                    <div onClick={() => signIn("google")}
+                                         className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
                                         <FcGoogle size={25}/>
                                         <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
                                             with Google</p>
@@ -90,9 +89,9 @@ function Login() {
                             <div className="border-t p-2 pt-6 w-5/6 mx-auto px-2 -m-2"/>
                             <p className="font-regular text-gray-600 dark:text-white cursor-pointer">
                                 <span>Don&rsquo;t have an account? </span>
-                                <a className="text-blueCrayola rounded-lg p-1 font-bold pl-1" onClick={async () => {
+                                <Link className="text-blueCrayola rounded-lg p-1 font-bold pl-1" onClick={async () => {
                                     await router.push("/register");
-                                }}>Create Account</a>
+                                }} href={"/register"}>Create Account</Link>
                             </p>
                         </div>
                     </div>
@@ -103,13 +102,17 @@ function Login() {
     );
 }
 
-export async function getServerSideProps() {
-    const users = null;
+export default Login;
+
+export async function getServerSideProps(context: any) {
+    const session = await getSession(context);
+
+    if (session) {
+        context.res.writeHead(302, {Location: '/'});
+        context.res.end();
+        return {props: session};
+    }
     return {
-        props: {
-            users,
-        },
+        props: {session},
     };
 }
-
-export default Login;

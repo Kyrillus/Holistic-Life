@@ -18,6 +18,12 @@ export const socialIcons = [
     // {file: "donate", name:"donate", height: "18"}
 ];
 
+export const legalLinks = [
+    {name: "terms of service", href: "/terms-of-service"},
+    {name: "privacy policy", href: "/privacy-policy"},
+    {name: "cookie use", href: "/cookie-use"}
+];
+
 export const profileSettings = [
     {name: "profile", icon: MdContactPage},
     {name: "settings", icon: FcSettings, size: 5},
