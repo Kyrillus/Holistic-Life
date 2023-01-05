@@ -36,7 +36,7 @@ function Contact() {
                         {socialIcons.map(item =>
                                 <a key={item.name} href={item.link} target={item.newTab ? "_blank" : ""}>
                                     <div className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
-                                        <div className="w-16 flex justify-center">
+                                        <div className={"h-" + item.height +" w-16 flex justify-center"}>
                                             <img className={"h-" + item.height + " w-auto"}
                                                  src={"/social-icons/" + item.file + ".png"}/>
                                         </div>
