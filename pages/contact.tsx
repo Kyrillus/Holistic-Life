@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from 'react';
 import {socialIcons} from "../types/vars";
+import clsx from "clsx";
 
 function Contact() {
     return (
@@ -34,18 +35,19 @@ function Contact() {
                     </div>
                     <div className="flex flex-col items-center md:items-start gap-4 pt-4">
                         {socialIcons.map(item =>
-                                <a key={item.name} href={item.link} target={item.newTab ? "_blank" : ""}>
-                                    <div className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
-                                        <div className={`${item.height} ` +" w-16 flex justify-center"}>
-                                            <img className={`${item.height} ` + "w-auto"}
-                                                 src={"/social-icons/" + item.file + ".png"}/>
-                                        </div>
-                                        <div className="flex grow justify-center">
-                                            <p className="font-medium group-hover:font-semibold dark:group-hover:font-extrabold">{item.name}</p>
-                                        </div>
-
+                            <a key={item.name} href={item.link} target={item.newTab ? "_blank" : ""}>
+                                <div
+                                    className="flex w-[20rem] sm:w-[22rem] md:w-96 h-20 group overflow-hidden dark:hover:text-black items-center cursor-pointer border-[0.15rem] border-aero hover:bg-uranianBlue  border rounded-3xl py-4 px-4">
+                                    <div className={clsx(item.height, "w-16 flex justify-center")}>
+                                        <img className={clsx(item.height, "w-auto")}
+                                             src={"/social-icons/" + item.file + ".png"}/>
                                     </div>
-                                </a>
+                                    <div className="flex grow justify-center">
+                                        <p className="font-medium group-hover:font-semibold dark:group-hover:font-extrabold">{item.name}</p>
+                                    </div>
+
+                                </div>
+                            </a>
                         )}
                     </div>
 
