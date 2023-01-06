@@ -1,9 +1,9 @@
-import Image from "next/image";
 import React from 'react';
 import {socialIcons} from "../types/vars";
 import clsx from "clsx";
 
 function Contact() {
+
     return (
         <div className="select-none">
             <div className="flex justify-center py-10 px-4 dark:text-white select-none">
@@ -11,8 +11,8 @@ function Contact() {
                     <div className="flex justify-center">
                         <div className="flex justify-center gap-5">
                             <div className="flex w-1/3 md:w-auto">
-                                <div className="">
-                                    <Image width={3024} height={4032} onContextMenu={(e) => {
+                                <div className="rounded-full">
+                                    <img onContextMenu={(e) => {
                                         e.preventDefault()
                                     }} className="md:w-32 md:w-32 w-24 h-24 rounded-full object-cover object-top"
                                            src="/profile/reyan.jpg" alt={"reyan"}/>
