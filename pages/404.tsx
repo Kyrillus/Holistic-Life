@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link'
 
-function FourOhFour()
-{
+function FourOhFour() {
     return (
         <div className="flex justify-center items-center min-h-[70vh] dark:text-white">
             <div className="flex flex-col gap-4">
