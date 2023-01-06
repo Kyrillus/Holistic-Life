@@ -9,15 +9,18 @@ function Register() {
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
-                        <div className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
-                            <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create your
+                        <div
+                            className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
+                            <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create
+                                your
                                 account</h2>
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="w-full p-2 pb-2">
                                     <div
                                         className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
                                         <FcGoogle size={25}/>
-                                        <p className="font-medium dark:text-white transition-[color] duration-1000">Continue with Google</p>
+                                        <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
+                                            with Google</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-row">
@@ -77,12 +80,13 @@ function Register() {
                             <div className="px-20">
                                 <p className="font-regular text-sm text-gray-600 dark:text-white">
                                     <span>By clicking “Create Account”, you agree to our <br/></span>
-                                        {legalLinks.map(((legal, index) =>
+                                    {legalLinks.map(((legal, index) =>
                                             <>
-                                                <Link className="text-blueCrayola rounded-lg font-bold" href={legal.href}> {legal.name}</Link>
-                                                {index === legalLinks.length - 1 ? "." : (index === legalLinks.length -2 ? " and" : ",")}
+                                                <Link className="text-blueCrayola rounded-lg font-bold"
+                                                      href={legal.href}> {legal.name}</Link>
+                                                {index === legalLinks.length - 1 ? "." : (index === legalLinks.length - 2 ? " and" : ",")}
                                             </>
-                                        ))}
+                                    ))}
                                 </p>
                             </div>
                         </div>
