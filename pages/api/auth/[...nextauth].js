@@ -8,22 +8,22 @@ export default NextAuth({
             clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET
         }),
     ],
-    session: { strategy: "jwt" },
+    session: {strategy: "jwt"},
 
     pages: {
         signIn: "/login",
         error: "/login"
     },
-    
+
     callbacks: {
 
-        async session({ session, token, user }) {
+        async session({session, token, user}) {
             session.jwt = token.jwt;
             session.id = token.id;
             return session;
         },
 
-        async jwt({ token, user, account }) {
+        async jwt({token, user, account}) {
 
             const isSignIn = !!user;
             if (isSignIn) {
