@@ -5,14 +5,14 @@ import LightDarkModeSwitch from "./lightDarkModeSwitch";
 import {moonColorDesktop, navItems, profileSettings, sunColorDesktop} from "../../types/vars";
 import ArrowLink from "../links/ArrowLink";
 import Image from 'next/image';
-import {useSession} from "next-auth/react";
+import {signIn, signOut, useSession} from "next-auth/react";
 
 function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
     const [profileClicked, setProfileClicked] = useState(false);
     const toggleProfile = () => setProfileClicked(!profileClicked);
     const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
 
-    const {data, status} = useSession()
+    const {data, status} = useSession();
     const router = useRouter();
 
     return (
@@ -76,13 +76,13 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                     {profileSettings.map(item =>
                                                         (
                                                             <div
-                                                                className="grid grid-rows-1 grid-flow-col items-center pr-1 transition-all duration-150 ease-in-out hover:bg-gray-100">
+                                                                onMouseDown={ async (e) => {e.preventDefault(); await signOut()}}
+                                                                className="grid grid-rows-1 grid-flow-col items-center pr-1 cursor-pointer transition-all duration-150 ease-in-out hover:bg-gray-100">
                                                                 <div className="flex items-center justify-self-start">
-                                                                    <a
+                                                                    <p
                                                                         key={item.name}
-                                                                        className="block px-3 py-2 text-sm leading-5 text-gray-700"
-                                                                        href="#" role="menuitem"> {item.name}
-                                                                    </a>
+                                                                        className="block px-3 py-2 text-sm leading-5 text-gray-700" role="menuitem"> {item.name}
+                                                                    </p>
                                                                 </div>
                                                                 <div
                                                                     className="flex items-center w-10 h-auto justify-center justify-self-end">
@@ -114,7 +114,3 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
 }
 
 export default Navbar;
-
-export async function getServerSideProps(context: any) {
-
-}

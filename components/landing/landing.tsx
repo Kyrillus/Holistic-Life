@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSession} from "next-auth/react";
 
 function Landing() {
+    const {data, status} = useSession();
+    useEffect( () => {
+        console.log(data);
+    });
+
     return (
         <div>
             <div className="relative bg-white dark:bg-gray-900 overflow-hidden">

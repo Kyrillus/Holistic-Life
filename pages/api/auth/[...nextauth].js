@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export default NextAuth({
     providers: [
@@ -7,6 +8,16 @@ export default NextAuth({
             clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
             clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET
         }),
+        CredentialsProvider({
+            name: "Credentials",
+            credentials: {
+                username: { label: "Username", type: "text", placeholder: "username" },
+                password: {  label: "Password", type: "password" }
+            },
+            async authorize(credentials, req) {
+
+            }
+        })
     ],
     session: {strategy: "jwt"},
 
@@ -32,7 +43,7 @@ export default NextAuth({
                 );
                 const data = await response.json();
                 token.jwt = data.jwt;
-                token.id = data.id;
+                token.id = data.user.id;
             }
             return token
         }

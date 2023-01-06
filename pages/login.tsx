@@ -19,15 +19,14 @@ function Login() {
     }, []);
 
     const verifyUser = async () => {
-        console.log(email);
-        console.log(password);
         loginUser(email, password)
             .then(async () => {
                 await signIn("credentials", {username: email, password: password});
             })
             .catch(() => {
                 console.log("error")
-            })
+            });
+        await loginUser(email, password);
     }
     return (
         <section className="relative overflow-hidden md:py-16 select-none">

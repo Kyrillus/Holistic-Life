@@ -1,5 +1,7 @@
 import { FcSettings } from 'react-icons/fc';
 import { MdContactPage } from 'react-icons/md';
+import { BiLogOut } from 'react-icons/bi';
+import {signOut} from "next-auth/react";
 
 export const navItems = [
     {name: "Dashboard", path: "/dashboard"},
@@ -25,8 +27,9 @@ export const legalLinks = [
 ];
 
 export const profileSettings = [
-    {name: "profile", icon: MdContactPage},
-    {name: "settings", icon: FcSettings, size: 5},
+    {name: "profile", icon: MdContactPage, href: "#"},
+    {name: "settings", icon: FcSettings, href:"#", size: 5},
+    {name: "signOut", icon: BiLogOut, href: "signOut", size: 5},
 ];
 
 export const moonColorDesktop = "#C9C6C6FF";
