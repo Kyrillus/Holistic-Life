@@ -1,7 +1,10 @@
 import * as React from 'react';
 import clsx from "clsx";
 
-export default function ArrowLink<C extends React.ElementType>({className, direction = 'right'}: {className?: string, direction?: string}) {
+export default function ArrowLink<C extends React.ElementType>({
+                                                                   className,
+                                                                   direction = 'right'
+                                                               }: { className?: string, direction?: string }) {
     return (
         <div
             className={clsx(
