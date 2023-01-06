@@ -11,7 +11,8 @@ export default NextAuth({
     session: { strategy: "jwt" },
 
     pages: {
-        signIn: "/login"
+        signIn: "/login",
+        error: "/login"
     },
     
     callbacks: {
@@ -31,7 +32,7 @@ export default NextAuth({
                 );
                 const data = await response.json();
                 token.jwt = data.jwt;
-                token.id = data.user.id;
+                token.id = data.id;
             }
             return token
         }
