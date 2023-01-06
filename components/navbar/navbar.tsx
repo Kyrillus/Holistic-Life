@@ -5,16 +5,15 @@ import LightDarkModeSwitch from "./lightDarkModeSwitch";
 import {moonColorDesktop, navItems, profileSettings, sunColorDesktop} from "../../types/vars";
 import ArrowLink from "../links/ArrowLink";
 import Image from 'next/image';
-import useUserStore from "../../lib/useStore";
 import {useSession} from "next-auth/react";
 
-function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any}) {
+function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
     const [profileClicked, setProfileClicked] = useState(false);
     const toggleBurgerMenu = () => setNavbarOpen(!navbarOpen);
-    const { data, status } = useSession()
+    const {data, status} = useSession()
 
     useEffect(() => {
-        if (status === "authenticated"){
+        if (status === "authenticated") {
 
         }
     }, [])
@@ -71,7 +70,8 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                 <Image width={3024} height={4032} onContextMenu={(e) => {
                                                     e.preventDefault()
                                                 }} className="h-10 w-10 rounded-full object-cover object-top"
-                                                       src={data?.user?.image ? data?.user?.image : "/profile/profileDefault.jpg"} alt={"default"}/>
+                                                       src={data?.user?.image ? data?.user?.image : "/profile/profileDefault.jpg"}
+                                                       alt={"default"}/>
                                             </button>
                                         </div>
                                         {/* Settings Menu */}
