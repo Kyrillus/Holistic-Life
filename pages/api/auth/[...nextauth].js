@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
+import {loginUser} from "../../../lib/userAPI";
 
 export default NextAuth({
     providers: [
@@ -11,11 +12,14 @@ export default NextAuth({
         CredentialsProvider({
             name: "Credentials",
             credentials: {
-                username: { label: "Username", type: "text", placeholder: "username" },
-                password: {  label: "Password", type: "password" }
+                username: {label: "Username", type: "text", placeholder: "username"},
+                password: {label: "Password", type: "password"}
             },
             async authorize(credentials, req) {
-
+                const data = await loginUser(credentials.username, credentials.password);
+                if (data)
+                    return data.jwt;
+                return null;
             }
         })
     ],
@@ -43,7 +47,7 @@ export default NextAuth({
                 );
                 const data = await response.json();
                 token.jwt = data.jwt;
-                token.id = data.user.id;
+                token.id = data.user?.id;
             }
             return token
         }

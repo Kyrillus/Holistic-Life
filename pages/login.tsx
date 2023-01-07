@@ -2,15 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
 import {loginUser} from '../lib/userAPI';
-import useUserStore from "../lib/useStore";
 import {getSession, signIn} from "next-auth/react";
 import Link from "next/link";
 
 function Login() {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const router = useRouter();
-    const userSate = useUserStore((state) => state.userState);
-    const setUser = useUserStore((state) => state.login);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -22,11 +18,11 @@ function Login() {
         loginUser(email, password)
             .then(async () => {
                 await signIn("credentials", {username: email, password: password});
+                await router.push("/");
             })
             .catch(() => {
                 console.log("error")
             });
-        await loginUser(email, password);
     }
     return (
         <section className="relative overflow-hidden md:py-16 select-none">
@@ -72,7 +68,7 @@ function Login() {
                                         <div
                                             className="absolute top-0 left-0 h-full w-full rounded-lg bg-white opacity-0  duration-300 ease-out group-hover:opacity-50"/>
                                         <button
-                                            onClick={verifyUser}
+                                            onClick={() => signIn("credentials", {username: email, password: password})}
                                             className="font-heading w-full overflow-hidden rounded-md  text-base font-medium text-black">
                                             <div
                                                 className="relative overflow-hidden rounded-md border bg-transparent dark:bg-gray-900 bg-uranianBlue py-4 px-9">

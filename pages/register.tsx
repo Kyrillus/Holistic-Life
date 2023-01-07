@@ -2,6 +2,7 @@ import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import Link from "next/link";
 import {legalLinks} from "../types/vars";
+import {signIn} from "next-auth/react";
 
 function Register() {
     return (
@@ -17,6 +18,7 @@ function Register() {
                             <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="w-full p-2 pb-2">
                                     <div
+                                        onClick={() => signIn("google")}
                                         className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
                                         <FcGoogle size={25}/>
                                         <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
@@ -38,7 +40,7 @@ function Register() {
                                     </div>
                                 </div>
 
-                                <div className="w-full p-2 pt-4">
+                                <div className="w-full p-2">
                                     <p className="p-1 text-start font-medium">E-Mail</p>
                                     <input
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
@@ -82,7 +84,7 @@ function Register() {
                                     <span>By clicking “Create Account”, you agree to our <br/></span>
                                     {legalLinks.map(((legal, index) =>
                                             <>
-                                                <Link className="text-blueCrayola rounded-lg font-bold"
+                                                <Link key={index} className="text-blueCrayola rounded-lg font-bold"
                                                       href={legal.href}> {legal.name}</Link>
                                                 {index === legalLinks.length - 1 ? "." : (index === legalLinks.length - 2 ? " and" : ",")}
                                             </>
