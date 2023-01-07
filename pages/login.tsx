@@ -10,27 +10,13 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {
-
-    }, []);
-
-    const verifyUser = async () => {
-        loginUser(email, password)
-            .then(async () => {
-                await signIn("credentials", {username: email, password: password});
-                await router.push("/");
-            })
-            .catch(() => {
-                console.log("error")
-            });
-    }
     return (
         <section className="relative overflow-hidden md:py-16 select-none">
             <div className="container relative z-10 mx-auto px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
                         <div
-                            className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
+                            className="mx-auto rounded-xl py-14 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
                             <div className="flex justify-center items-center w-full">
                                 <h2 className="font-heading pb-10 text-2xl md:text-3xl font-bold text-prussianBlue dark:text-white md:w-full">Log
                                     in to your

@@ -11,7 +11,7 @@ function Register() {
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6">
                         <div
-                            className="mx-auto rounded-xl py-20 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
+                            className="mx-auto rounded-xl py-14 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
                             <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create
                                 your
                                 account</h2>
