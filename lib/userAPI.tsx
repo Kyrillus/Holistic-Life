@@ -18,6 +18,32 @@ export async function fetchData(endpoint: string, filters?: string) {
     }
 }
 
+export async function registerUser(firstname: string, lastname: string, email: string, password: string) {
+    try {
+        const response = await fetch(`${API_URL}/auth/local/register`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                username: email,
+                email: email,
+                password: password
+            }),
+        });
+
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response.json());
+        }
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
 export async function loginUser(email: string, password: string) {
     try {
         const response = await fetch(`${API_URL}/auth/local`, {

@@ -3,6 +3,7 @@ import {moonColorMobile, navItems, sunColorMobile} from "../../types/vars";
 import LightDarkModeSwitch from "./lightDarkModeSwitch";
 import {useRouter} from "next/router";
 import {useSession} from "next-auth/react";
+import Image from "next/image";
 
 function MobileMenu({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: any }) {
 
@@ -52,8 +53,11 @@ function MobileMenu({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpe
                         <div className="pt-5">
                             {status === "loading" ? (<div> </div>) :
                                 (status === "authenticated" ? (
-                                <img src={"" + data?.user?.image} className={"rounded-full h-16"}
-                                     alt={"profile"}/>) :
+                                        <Image width={3024} height={4032} onContextMenu={(e) => {
+                                            e.preventDefault()
+                                        }} className="rounded-full h-24 w-24"
+                                               src={data?.user?.image ? data?.user?.image : "/profile/profileDefault.jpg"}
+                                               alt={"default"}/>) :
                                 (<p onClick={async () => {await router.push("/login");setNavbarOpen(false);
                             }} className="text-white border rounded-xl py-2 px-8 text-3xl border border-white cursor-pointer">log in</p>))}
 

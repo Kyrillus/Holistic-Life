@@ -75,12 +75,11 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                      aria-orientation="vertical" aria-labelledby="user-menu">
                                                     {profileSettings.map(item =>
                                                         (
-                                                            <div
+                                                            <div key={item.name}
                                                                 onMouseDown={ async (e) => {e.preventDefault(); await signOut()}}
                                                                 className="grid grid-rows-1 grid-flow-col items-center pr-1 cursor-pointer transition-all duration-150 ease-in-out hover:bg-gray-100">
                                                                 <div className="flex items-center justify-self-start">
                                                                     <p
-                                                                        key={item.name}
                                                                         className="block px-3 py-2 text-sm leading-5 text-gray-700" role="menuitem"> {item.name}
                                                                     </p>
                                                                 </div>

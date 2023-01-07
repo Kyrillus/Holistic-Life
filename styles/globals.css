@@ -30,6 +30,10 @@ body {
     -ms-user-select: none;
 }
 
+input:invalid {
+    border: 1px solid #ec2626;
+}
+
 img {
     @apply noSelectionOrDrag;
 }
