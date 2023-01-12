@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
-import {loginUser} from "../../../lib/userAPI";
+import {loginUser, userExists} from "../../../lib/userAPI";
 
 export default NextAuth({
     providers: [
@@ -50,7 +50,15 @@ export default NextAuth({
                 token.id = data.user?.id;
             }
             return token
-        }
+        },
+
+        async signIn({ account, profile }) {
+            if (account.provider === "google") {
+                // check wether account confirmed TODO
+                return await userExists(profile.email);
+            }
+            return true
+        },
     },
     secret: process.env.NEXTAUTH_SECRET
 })

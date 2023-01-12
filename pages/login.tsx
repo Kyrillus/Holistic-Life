@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {useRouter} from "next/router";
-import {loginUser} from '../lib/userAPI';
+import {confirmUser, loginUser} from '../lib/userAPI';
 import {getSession, signIn} from "next-auth/react";
 import Link from "next/link";
 
@@ -93,6 +93,12 @@ export async function getServerSideProps(context: any) {
         context.res.end();
         return {props: session};
     }
+
+
+    if (context.query.confirmation){
+        await confirmUser(context.query.confirmation);
+    }
+
     return {
         props: {session},
     };

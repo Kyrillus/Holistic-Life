@@ -1,23 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
-export async function fetchData(endpoint: string, filters?: string) {
-    try {
-        const response = await fetch(`${API_URL}/${endpoint}${filters ? "/" + filters : ""}`, {
-            headers: {
-                Authorization: `Bearer ${BEARER_TOKEN}`,
-            },
-        });
-        if (response.ok) {
-            return response.json();
-        } else {
-            return Promise.reject("error fetching data");
-        }
-    } catch (err) {
-        return Promise.reject("error fetching data");
-    }
-}
-
 export async function registerUser(firstname: string, lastname: string, email: string, password: string) {
     try {
         const response = await fetch(`${API_URL}/auth/local/register`, {
@@ -64,5 +47,37 @@ export async function loginUser(email: string, password: string) {
         }
     } catch (err) {
         return Promise.reject("error fetching data");
+    }
+}
+
+export async function userExists(email: string) {
+    try {
+        const response = await fetch(`${API_URL}/users?filters[email][$eq]=` + email, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${BEARER_TOKEN}`,
+                'content-type': 'application/json;charset=UTF-8'
+            }
+        });
+
+        return response.ok;
+    }catch (err){
+        return false;
+    }
+}
+
+export async function confirmUser(cofirmationCode: string) {
+    try {
+        const response = await fetch(`${API_URL}/auth/email-confirmation?confirmation=` + cofirmationCode, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${BEARER_TOKEN}`,
+                'content-type': 'application/json;charset=UTF-8'
+            }
+        });
+
+        return response.ok;
+    }catch (err){
+        return false;
     }
 }
