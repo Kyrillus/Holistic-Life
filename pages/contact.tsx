@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {socialIcons} from "../types/vars";
 import clsx from "clsx";
+import Modal from "../components/modal/ContactModal";
 
 function Contact() {
-
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <div className="select-none">
+            <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />
             <div className="flex justify-center py-10 px-4 dark:text-white select-none">
                 <div className="flex-col items-center flex gap-4">
                     <div className="flex justify-center">

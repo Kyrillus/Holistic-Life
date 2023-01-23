@@ -11,7 +11,7 @@ export const navItems = [
 ];
 
 export const socialIcons = [
-    {file: "google_contact", name:"contact", height: "h-14", link: "https://admin.holistic-life.dev/uploads/vcard_f96bea270f.vcf"},
+    {file: "google_contact", name:"contact", height: "h-14", link: "/contact/reyan-zein.vcf"},
     {file: "gmail", name:"e-mail", height: "h-10", link: "mailto:contact@holistic-life.dev"},
     {file: "linkedin", name:"linkedin", height: "h-12", link: "https://www.linkedin.com/in/reyan-zein-11506225b", newTab: true},
     // {file: "whatsapp", name:"whatsapp", height: "18"},
