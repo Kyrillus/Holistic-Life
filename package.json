@@ -1,5 +1,5 @@
 {
-  "name": "Holistic-Life",
+  "name": "holistic_life",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,11 +22,15 @@
     "clsx": "^1.2.1",
     "hamburger-react": "^2.5.0",
     "next": "^13.0.6",
+    "next-auth": "^4.18.7",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-toggle-dark-mode": "^1.1.1",
     "tailwind-merge": "^1.8.0",
-    "three": "^0.147.0"
+    "three": "^0.147.0",
+    "zustand": "^4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
