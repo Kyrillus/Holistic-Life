@@ -36,7 +36,7 @@ function Login() {
                                     <input
                                         onChange={(e) => setEmail(e.target.value)}
                                         className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
-                                        type="text" placeholder="email address" name="email"/>
+                                        type="email" placeholder="email address" name="email"/>
                                 </div>
                                 <div className="w-full p-2">
                                     <div className="flex justify-between items-center">
