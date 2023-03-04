@@ -61,7 +61,7 @@ export async function userExists(email: string) {
         });
 
         return response.ok;
-    }catch (err){
+    } catch (err) {
         return false;
     }
 }
@@ -77,7 +77,7 @@ export async function confirmUser(cofirmationCode: string) {
         });
 
         return response.ok;
-    }catch (err){
+    } catch (err) {
         return false;
     }
 }

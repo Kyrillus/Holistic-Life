@@ -51,7 +51,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                             </div>
                         </div>
 
-                        <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center">
+                        <div className="hidden lg:ml-4 lg:flex gap-4 lg:items-center w-32">
                             <LightDarkModeSwitch sunColor={sunColorDesktop} moonColor={moonColorDesktop} size={17}/>
                             {status === "loading" ? (<div/>) : (status === "authenticated" ? (
                                         <div className="relative flex-shrink-0">

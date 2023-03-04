@@ -4,11 +4,11 @@ export default async (req: any, res: any) => {
     const { name, tel, addInfo } = req.body;
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.mailersend.net',
-        port: 587,
+        host: 'mail.smtp2go.com',
+        port: 2525,
         auth: {
-            user: 'MS_2C85TY@holistic-life.dev',
-            pass: 'EFj5aRHRihZ2WLhj'
+            user: process.env.SMTP_USERNAME,
+            pass: process.env.SMTP_PASSWORD
         }
     });
 
