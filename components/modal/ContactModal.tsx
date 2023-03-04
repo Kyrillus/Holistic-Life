@@ -4,6 +4,7 @@ import axios from 'axios';
 function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any }) {
     const [name, setName] = useState("");
     const [tel, setTel] = useState("");
+    const [mail, setMail] = useState("");
     const [info, setInfo] = useState("");
     const [sending, setSending] = useState(false);
     const [error, setError] = useState("");
@@ -25,7 +26,7 @@ function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any })
                 <div
                     className={"absolute w-full transform h-screen bg-gray-900 bg-opacity-10 transition-all delay-500 backdrop-filter backdrop-blur-sm"}>
                     <div
-                        className="relative top-20 max-w-sm sm:w-96 h-96 w-[80vw] m-auto dark:bg-prussianBlue bg-white rounded-lg">
+                        className="relative top-20 max-w-sm sm:w-96  w-[80vw] m-auto dark:bg-prussianBlue bg-white rounded-lg shadow-xl">
                         <button onClick={() => setModalOpen(false)} className="absolute top-0 right-0 p-2">
                             <svg className="fill-current dark:text-white text-sapphire"
                                  xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18">
@@ -33,16 +34,19 @@ function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any })
                                     d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
                             </svg>
                         </button>
-                        <form onSubmit={submitContact} className="flex flex-col p-10 justify-center align-items-center space-y-7">
+                        <form onSubmit={submitContact} className="flex flex-col p-10 justify-center align-items-center space-y-5">
                             <input required={true} onChange={(e) => setName(e.target.value)}
                                    className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
-                                   placeholder="Max Muster" type="text"/>
+                                   placeholder="full name" type="text"/>
                             <input onChange={(e) => setTel(e.target.value)}
                                    className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
-                                   inputMode="tel" placeholder="+43 676 401022" type="tel"/>
+                                   inputMode="tel" placeholder="phone number" type="tel"/>
+                            <input onChange={(e) => setMail(e.target.value)}
+                                   className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
+                                   inputMode="tel" placeholder="email" type="email"/>
                             <textarea onChange={(e) => setInfo(e.target.value)}
-                                      placeholder="Additional Info"
-                                      className="border-2 text-black dark:focus:border-black dark:bg-white p-2 border-gray-400 focus:border-sapphire outline-none rounded-xl"/>
+                                      placeholder="additional info"
+                                      className="border-2 text-black dark:focus:border-black h-24 dark:bg-white p-2 border-gray-400 focus:border-sapphire outline-none rounded-xl"/>
                             <button
                                     className="flex gap-3 flex-row justify-center align-center border-2 dark:bg-gray-800 text-white bg-prussianBlue border-gray-400 py-2 rounded-xl">Submit
                                 <svg aria-hidden="true"
@@ -58,7 +62,6 @@ function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any })
                             </button>
                             {error.length > 0 && <p className="text-center text-red-600">{error}</p>}
                         </form>
-
                     </div>
                 </div>
             )}

@@ -6,7 +6,7 @@ import {signOut} from "next-auth/react";
 export const navItems = [
     {name: "Dashboard", path: "/dashboard"},
     {name: "Network", path: "/network"},
-    {name: "Teams", path: "/teams"},
+    {name: "Community", path: "/community"},
     {name: "Contact", path: "/contact"}
 ];
 
