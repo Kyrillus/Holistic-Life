@@ -12,7 +12,7 @@ function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any })
     const submitContact = async () => {
         setSending(true);
         try {
-            await axios.post('/api/exchangeContact', {name: name, tel: tel, addInfo: info});
+            await axios.post('/api/exchangeContact', {name: name, tel: tel, mail: mail, addInfo: info});
             setModalOpen(false);
         } catch (error) {
             setError("unexpected error");
@@ -38,10 +38,10 @@ function Modal({modalOpen, setModalOpen}: { modalOpen: any, setModalOpen: any })
                             <input required={true} onChange={(e) => setName(e.target.value)}
                                    className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
                                    placeholder="full name" type="text"/>
-                            <input onChange={(e) => setTel(e.target.value)}
+                            <input required={true} onChange={(e) => setTel(e.target.value)}
                                    className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
                                    inputMode="tel" placeholder="phone number" type="tel"/>
-                            <input onChange={(e) => setMail(e.target.value)}
+                            <input required={true} onChange={(e) => setMail(e.target.value)}
                                    className="border-2 dark:bg-white border-gray-400 p-2 text-black dark:focus:border-black focus:border-sapphire outline-none rounded-xl"
                                    inputMode="tel" placeholder="email" type="email"/>
                             <textarea onChange={(e) => setInfo(e.target.value)}
