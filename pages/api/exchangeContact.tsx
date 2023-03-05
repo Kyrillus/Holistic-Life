@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
 export default async (req: any, res: any) => {
-    const { name, tel, addInfo } = req.body;
+    const { name, tel, mail, addInfo } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: 'mail.smtp2go.com',
