@@ -5,14 +5,17 @@ import {Button} from "@chakra-ui/react";
 import {MdAddCircle} from "react-icons/md";
 import {MdAddTask} from "react-icons/md";
 
-
+export interface graphData {
+    lifearea: string;
+    current: number;
+    past: number;
+}
 function Dashboard() {
-
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<graphData[]>([]);
     const [lifeArea, setLifeArea] = useState("");
     const addLifeArea = () => {
         if (lifeArea != "") {
-            const newData = [...data, {lifearea: lifeArea, current: 100, past: 10}]
+            let newData = [...data, {lifearea: lifeArea, current: 100, past: 10}]
             setData(newData);
             setLifeArea("");
         }
