@@ -4,7 +4,6 @@ import {Input, InputGroup, InputRightElement} from "@chakra-ui/input";
 import {Button} from "@chakra-ui/react";
 import {MdAddCircle} from "react-icons/md";
 import {MdAddTask} from "react-icons/md";
-import {FaEdit} from "react-icons/md";
 
 
 function Dashboard() {
