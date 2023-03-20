@@ -53,10 +53,6 @@ export default NextAuth({
         },
 
         async signIn({ account, profile }) {
-            if (account.provider === "google") {
-                // check wether account confirmed TODO
-                return await userExists(profile.email);
-            }
             return true
         },
     },
