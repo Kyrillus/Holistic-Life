@@ -10,24 +10,24 @@ export async function getMailFromMailingList(email: string) {
                 'content-type': 'application/json;charset=UTF-8'
             }
         });
-
-        return response.ok;
+        return response;
     } catch (err) {
-        return false;
+        return null;
     }
 }
 
 export async function unsubscribeFromMailingList(id: number) {
     try {
-        const response = await fetch(`${API_URL}/mailing-lists`, {
+        const response = await fetch(`${API_URL}/mailing-lists/${id}`, {
             method: 'DELETE',
             headers: {
+                Authorization: `Bearer ${BEARER_TOKEN}`,
                 'content-type': 'application/json;charset=UTF-8'
             }
         });
 
-        return response.ok;
+        return response;
     } catch (err) {
-        return false;
+        return null;
     }
 }
