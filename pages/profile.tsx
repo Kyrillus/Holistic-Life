@@ -17,7 +17,6 @@ function Profile() {
         console.log(session.user?.email)
         console.log(session.user?.name)
         console.log(session.user?.image)
-
         let name: string;
         const onTodoChange = (value: string) => {
             name = value
