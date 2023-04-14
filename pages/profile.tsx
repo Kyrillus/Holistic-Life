@@ -2,13 +2,16 @@ import {getMailFromMailingList, unsubscribeFromMailingList} from "../lib/mailing
 import {useSession} from "next-auth/react";
 
 import Link from "next/link";
-async function getIdAndUnsubscribe(email: string) {
-    getMailFromMailingList(email).then((res) => {
-        console.log(res);
-        res?.json().then((json) => {
-            unsubscribeFromMailingList(json.id);
-        });
-    })
+
+async function getIdAndUnsubscribe(email: string | null | undefined) {
+    if(email !== undefined && email !== null) {
+        getMailFromMailingList(email).then((res) => {
+            console.log(res);
+            res?.json().then((json) => {
+                unsubscribeFromMailingList(json.id);
+            });
+        })
+    }
 }
 
 function Profile() {
@@ -17,19 +20,12 @@ function Profile() {
         console.log(session.user?.email)
         console.log(session.user?.name)
         console.log(session.user?.image)
-        let name: string;
-        const onTodoChange = (value: string) => {
-            name = value
-        }
         return(
             <>
                 <div>
-                    <input onChange={e => onTodoChange(e.target.value)}/>
-                </div>
-                <div>
                     <button className="bg-gray-50 hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-full"
                             onClick={() => {
-                                getIdAndUnsubscribe(name);
+                                getIdAndUnsubscribe(session.user?.email);
                             }}>
                         Unsubscribe from mailing list
                     </button>
