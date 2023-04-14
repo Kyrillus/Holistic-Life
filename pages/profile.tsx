@@ -1,21 +1,12 @@
 import {getMailFromMailingList, unsubscribeFromMailingList} from "../lib/mailinglistApi";
 import {useSession} from "next-auth/react";
 
-import Link from "next/link";
-
-async function getIdAndUnsubscribe(email: string | null | undefined) {
-    if(email !== undefined && email !== null) {
-        getMailFromMailingList(email).then((res) => {
-            console.log(res);
-            res?.json().then((json) => {
-                unsubscribeFromMailingList(json.id);
-            });
-        })
-    }
-}
+import {useEffect} from "react";
+import {useRouter} from "next/router";
 
 function Profile() {
     const {data: session, status} = useSession()
+    const { push } = useRouter();
     if(status === "authenticated") {
         console.log(session.user?.email)
         console.log(session.user?.name)
@@ -34,12 +25,21 @@ function Profile() {
         )
     }
     else {
-        return(
-            <div>
-                <p>You are not logged in</p>
-                <Link href="/login">Go to login</Link>
-            </div>
-        )
+        useEffect(() => {
+            push('/login');
+        }, []);
+        return <p></p>;
+    }
+};
+
+async function getIdAndUnsubscribe(email: string | null | undefined) {
+    if(email !== undefined && email !== null) {
+        getMailFromMailingList(email).then((res) => {
+            console.log(res);
+            res?.json().then((json) => {
+                unsubscribeFromMailingList(json.id);
+            });
+        })
     }
 }
 
