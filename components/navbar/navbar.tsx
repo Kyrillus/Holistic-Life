@@ -76,7 +76,11 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                     {profileSettings.map(item =>
                                                         (
                                                             <div key={item.name}
-                                                                onMouseDown={ async (e) => {e.preventDefault(); await signOut()}}
+                                                                onMouseDown={ async (e) => {e.preventDefault();
+                                                                        if(item.name === "signOut") { await signOut() }
+                                                                        router.push(item.href);
+                                                                    }
+                                                                }
                                                                 className="grid grid-rows-1 grid-flow-col items-center pr-1 cursor-pointer transition-all duration-150 ease-in-out hover:bg-gray-100">
                                                                 <div className="flex items-center justify-self-start">
                                                                     <p
