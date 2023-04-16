@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
-import {loginUser, userExists} from "../../../lib/userAPI";
+import {loginUser} from "../../../lib/userAPI";
 
 export default NextAuth({
     providers: [
@@ -16,9 +16,9 @@ export default NextAuth({
                 password: {label: "Password", type: "password"}
             },
             async authorize(credentials, req) {
-                const data = await loginUser(credentials.username, credentials.password);
-                if (data)
-                    return data.jwt;
+                const {user, jwt} = await loginUser(credentials.username, credentials.password);
+                if (jwt)
+                    return {...user , jwt};
                 return null;
             }
         })
@@ -33,13 +33,13 @@ export default NextAuth({
     callbacks: {
 
         async session({session, token, user}) {
-            session.jwt = token.jwt;
             session.id = token.id;
-            return session;
+            session.jwt = token.jwt;
+            session.user.username = token.username;
+            return Promise.resolve(session);
         },
 
         async jwt({token, user, account}) {
-
             const isSignIn = !!user;
             if (isSignIn) {
                 const response = await fetch(
@@ -52,7 +52,7 @@ export default NextAuth({
             return token
         },
 
-        async signIn({ account, profile }) {
+        async signIn({account, profile}) {
             return true
         },
     },
