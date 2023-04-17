@@ -8,9 +8,6 @@ function Profile() {
     const {data: session, status} = useSession()
     const { push } = useRouter();
     if(status === "authenticated") {
-        console.log(session.user?.email)
-        console.log(session.user?.name)
-        console.log(session.user?.image)
         return(
             <>
                 <div>
@@ -34,11 +31,9 @@ function Profile() {
 
 async function getIdAndUnsubscribe(email: string | null | undefined) {
     if(email !== undefined && email !== null) {
-        getMailFromMailingList(email).then((res) => {
-            console.log(res);
-            res?.json().then((json) => {
-                unsubscribeFromMailingList(json.id);
-            });
+        let response = getMailFromMailingList(email);
+        response.then((res) => {
+            unsubscribeFromMailingList(res.data[0].id);
         })
     }
 }
