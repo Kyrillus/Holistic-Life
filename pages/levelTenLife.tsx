@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import {MdAddCircle, MdAddTask, MdEdit} from "react-icons/md";
 import {Reorder} from 'framer-motion';
+import {useSession} from "next-auth/react";
 
 export interface graphData {
     lifearea: string;
@@ -21,7 +22,6 @@ export interface graphData {
 function LevelTenLife() {
     const [data, setData] = useState<graphData[]>([]);
     const [lifeArea, setLifeArea] = useState("");
-
     const addLifeArea = () => {
         if (lifeArea != "" && data.filter(o => o.lifearea === lifeArea).length === 0) {
             let newData = [...data, {lifearea: lifeArea, current: 50, past: 10}]

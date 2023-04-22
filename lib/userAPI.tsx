@@ -1,6 +1,10 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
+export async function updateUser() {
+
+}
+
 export async function registerUser(firstname: string, lastname: string, email: string, password: string) {
     try {
         const response = await fetch(`${API_URL}/auth/local/register`, {

@@ -18,7 +18,7 @@ export default NextAuth({
             async authorize(credentials, req) {
                 const {user, jwt} = await loginUser(credentials.username, credentials.password);
                 if (jwt)
-                    return {...user , jwt};
+                    return {...user, jwt: jwt};
                 return null;
             }
         })
@@ -33,9 +33,12 @@ export default NextAuth({
     callbacks: {
 
         async session({session, token, user}) {
-            session.id = token.id;
             session.jwt = token.jwt;
             session.user.username = token.username;
+            session.user.id = token.user.id;
+            session.user.email = token.user.email;
+            session.user.firstname = token.user.firstname;
+            session.user.lastname = token.user.lastname;
             return Promise.resolve(session);
         },
 
@@ -46,10 +49,16 @@ export default NextAuth({
                     `${process.env.NEXT_PUBLIC_API_URL}/auth/${account?.provider}/callback?access_token=${account?.access_token}`
                 );
                 const data = await response.json();
-                token.jwt = data.jwt;
-                token.id = data.user?.id;
+                if (account?.provider === "credentials") {
+                    token.jwt = user.jwt;
+                    token.createdAt = user.createdAt;
+                    token.user = {id: user.id, email: user.email, username: user.username, firstname: user.firstname, lastname: user.lastname};
+                }else {
+                    token.jwt = data.jwt;
+                    token.user = {...user, id: data.user?.id};
+                }
             }
-            return token
+            return Promise.resolve(token);
         },
 
         async signIn({account, profile}) {
