@@ -9,9 +9,8 @@ import {
     NumberInputField,
     NumberInputStepper
 } from "@chakra-ui/react";
-import {MdAddCircle, MdAddTask, MdEdit} from "react-icons/md";
+import {MdAddCircle, MdEdit} from "react-icons/md";
 import {Reorder} from 'framer-motion';
-import {useSession} from "next-auth/react";
 
 export interface graphData {
     lifearea: string;
