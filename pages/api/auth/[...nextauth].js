@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
-import {loginUser, userExists} from "../../../lib/userAPI";
+import {loginUser} from "../../../lib/userAPI";
 
 export default NextAuth({
     providers: [
@@ -16,9 +16,9 @@ export default NextAuth({
                 password: {label: "Password", type: "password"}
             },
             async authorize(credentials, req) {
-                const data = await loginUser(credentials.username, credentials.password);
-                if (data)
-                    return data.jwt;
+                const {user, jwt} = await loginUser(credentials.username, credentials.password);
+                if (jwt)
+                    return {...user, jwt: jwt};
                 return null;
             }
         })
@@ -34,25 +34,34 @@ export default NextAuth({
 
         async session({session, token, user}) {
             session.jwt = token.jwt;
-            session.id = token.id;
-            return session;
+            session.user.username = token.username;
+            session.user.id = token.user.id;
+            session.user.email = token.user.email;
+            session.user.firstname = token.user.firstname;
+            session.user.lastname = token.user.lastname;
+            return Promise.resolve(session);
         },
 
         async jwt({token, user, account}) {
-
             const isSignIn = !!user;
             if (isSignIn) {
                 const response = await fetch(
                     `${process.env.NEXT_PUBLIC_API_URL}/auth/${account?.provider}/callback?access_token=${account?.access_token}`
                 );
                 const data = await response.json();
-                token.jwt = data.jwt;
-                token.id = data.user?.id;
+                if (account?.provider === "credentials") {
+                    token.jwt = user.jwt;
+                    token.createdAt = user.createdAt;
+                    token.user = {id: user.id, email: user.email, username: user.username, firstname: user.firstname, lastname: user.lastname};
+                }else {
+                    token.jwt = data.jwt;
+                    token.user = {...user, id: data.user?.id};
+                }
             }
-            return token
+            return Promise.resolve(token);
         },
 
-        async signIn({ account, profile }) {
+        async signIn({account, profile}) {
             return true
         },
     },

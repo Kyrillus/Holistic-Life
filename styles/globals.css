@@ -33,3 +33,7 @@ body {
 img {
     @apply noSelectionOrDrag;
 }
+
+.PhoneInputInput:focus {
+    outline: none;
+}
