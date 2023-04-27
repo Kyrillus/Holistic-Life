@@ -31,7 +31,6 @@ export default NextAuth({
     },
 
     callbacks: {
-
         async session({session, token, user}) {
             session.jwt = token.jwt;
             session.user.username = token.username;
