@@ -5,13 +5,7 @@ import {loginUser} from "../../lib/userAPI";
 function Landing() {
     const {data, status} = useSession();
     useEffect( () => {
-        /**
-        const test = async () => {
-            const user = await loginUser("test@gmail.com", "test1234");
-            console.log(user);
-        }
-        test();
-        console.log(data); **/
+        console.log(data);
     });
 
     return (
