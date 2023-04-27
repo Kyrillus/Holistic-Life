@@ -3,7 +3,7 @@ import { Session } from "next-auth";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
-export async function updateUser(data: Session | null, firstname: string, lastname: string) {
+export async function updateUser(data: any | null, firstname: string, lastname: string) {
     try {
         const response = await fetch(`${API_URL}/users/${data.user.id}`, {
             method: 'PUT',
