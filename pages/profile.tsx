@@ -33,7 +33,7 @@ function Profile() {
                     lastname: data.lastname,
                     email: data.email,
                     phone: data.phone,
-                    birthday: new Date(data.birthday),
+                    birthday: new Date(data.birthday != undefined ? data.birthday : new Date()),
                     male: data.male,
                     country: data.country,
                     city: data.city
@@ -67,7 +67,7 @@ function Profile() {
     function onSubmitForm(e) {
         e.preventDefault();
         updateUser(data?.user.id, profileData).then((data) => {
-            // TODO: show success or error toast
+            // TODO: show  toast
         });
     }
 
