@@ -9,7 +9,6 @@ import {useSession} from "next-auth/react";
 import {updateUser, userDetails} from "../lib/userAPI";
 import {profileForms} from "../types/User/Profile";
 import LoadingSpinner from "../components/Loaders/LoadingSpinner";
-import {Switch} from "@chakra-ui/react";
 
 function Profile() {
     const {data, status} = useSession<any>();
