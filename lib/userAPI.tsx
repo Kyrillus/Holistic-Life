@@ -5,23 +5,13 @@ const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
 export async function updateUser(userId: string, profileData: profileForms) {
     try {
-        const {firstname, lastname, phone, country, email, city, male, birthday} = profileData;
         const response = await fetch(`${API_URL}/users/${userId}`, {
             method: 'PUT',
             headers: {
                 Authorization: `Bearer ${BEARER_TOKEN}`,
                 'content-type': 'application/json;charset=UTF-8'
             },
-            body: JSON.stringify({
-                firstname: firstname,
-                lastname: lastname,
-                phone: phone,
-                country: country,
-                email: email,
-                city: city,
-                male: male,
-                birthday: birthday
-            })
+            body: JSON.stringify(profileData)
         });
 
         if (response.ok) {
