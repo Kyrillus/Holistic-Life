@@ -10,6 +10,7 @@ import {
     NumberInputStepper
 } from "@chakra-ui/react";
 import {MdAddCircle, MdEdit} from "react-icons/md";
+import {FcDeleteRow} from "react-icons/fc";
 import {Reorder} from 'framer-motion';
 
 export interface graphData {
@@ -29,6 +30,11 @@ function LevelTenLife() {
         }
     }
 
+    const deleteLifeArea = (lifearea: string) => {
+        let newData = data.filter(o => o.lifearea !== lifearea)
+        setData(newData);
+    }
+
     const onChangePercentage = (current: number, lifearea: string) => {
         if (current < 0 || current > 100)
             return;
@@ -42,12 +48,18 @@ function LevelTenLife() {
         setData(newData);
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            addLifeArea();
+        }
+    };
+
     return (
-        <section className="flex w-full w-screen flex-col md:flex-row  items-center pr-20 pb-12">
+        <section className="flex w-full w-screen flex-col md:flex-row  items-center md:pr-20 pb-12">
             <div className="flex dark:fill-white flex-row h-[400px] w-[400px] p-2">
                 <MyResponsiveRadar data={data}/>
             </div>
-            <div className="flex flex-col items-center self-start pt-24 pl-12">
+            <div className="flex flex-col items-center md:self-start pt-24 pl-12">
                 <div className="self-end pt-2">
                     <MdEdit className="ml-3" size={20} color={"#01adb4"}/>
                 </div>
@@ -59,15 +71,16 @@ function LevelTenLife() {
                            value={lifeArea}
                            type='text'
                            placeholder='Add Life Area'
+                           onKeyDown={handleKeyDown}
                     />
                     <Button h='1.75rem' pl={6} size='sm' onClick={addLifeArea}>
                         <MdAddCircle color={"green"} size={30}/>
                     </Button>
                 </div>
-                <Reorder.Group className="pt-8 flex-col self-start w-[16rem] space-y-3 pl-2" values={data}
+                <Reorder.Group className="pt-8 flex-col self-start w-[19rem] space-y-3 pl-2" values={data}
                                onReorder={setData}>
                     {data.map(item => (
-                        <Reorder.Item className="cursor-pointer flex flex-row  justify-between"
+                        <Reorder.Item className="cursor-pointer flex flex-row  justify-between group"
                                       key={item.lifearea}
                                       value={item}>
                             <p className="w-full break-all">{item.lifearea}</p>
@@ -89,6 +102,10 @@ function LevelTenLife() {
                                     <NumberDecrementStepper className="text-sapphire"/>
                                 </NumberInputStepper>
                             </NumberInput>
+                            <div className="w-16">
+                                <FcDeleteRow onClick={() => deleteLifeArea(item.lifearea)}
+                                             className="ml-3 group-hover:block hidden" size={20} color={"#01adb4"}/>
+                            </div>
                         </Reorder.Item>
                     ))}
                 </Reorder.Group>
