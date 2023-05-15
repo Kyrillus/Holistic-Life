@@ -38,28 +38,19 @@ function Register() {
                     <div className="w-full p-6">
                         <form onSubmit={(e) => onSubmit(e)} autoComplete="off"
                               className="mx-auto rounded-xl py-14 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
-                            <h2 className="font-heading pb-10 text-3xl font-bold text-prussianBlue dark:text-white">Create
+                            <h2 className="font-heading pb-4 text-3xl font-bold text-prussianBlue dark:text-white">Create
                                 your
                                 account</h2>
-                            <div className="-m-2 mx-auto mb-5 flex max-w-md flex-wrap">
-                                <div className="w-full p-2 pb-2">
-                                    <div
-                                        onClick={() => signIn("google")}
-                                        className="w-full items-center dark:bg-black bg-gray-50 gap-2 justify-center hover:border-sky-500 hover:bg-gray-100 flex py-3 cursor-pointer border border-gray-300 rounded-lg">
-                                        <FcGoogle size={25}/>
-                                        <p className="font-medium dark:text-white transition-[color] duration-1000">Continue
-                                            with Google</p>
-                                    </div>
-                                </div>
+                            <div className=" mx-auto mb-5 flex max-w-md flex-wrap">
                                 <div className="flex flex-row">
-                                    <div className="w-full p-2 pt-4 w-1/2">
+                                    <div className="p-2 pt-4 w-1/2">
                                         <p className="p-1 text-start font-medium">First Name</p>
                                         <input
                                             onChange={(e) => setFirstname(e.target.value)}
                                             className="w-full dark:bg-black monoFont placeholder:opacity-90 hover:placeholder:opacity-70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-500 placeholder-gray-500 hover:border-sky-500 outline-none focus:border-sky-500"
                                             required={true} type="text" placeholder="first name" name="firstname"/>
                                     </div>
-                                    <div className="w-full p-2 pt-4 w-1/2">
+                                    <div className="p-2 pt-4 w-1/2">
                                         <p className="p-1 text-start font-medium">Last Name</p>
                                         <input
                                             onChange={(e) => setLastname(e.target.value)}

@@ -69,13 +69,14 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                             </div>
                                             {/* Settings Menu */}
                                             <div
-                                                className={"absolute right-0 mt-2 z-10 origin-top-right rounded-md shadow-lg select-none " + (profileClicked ? 'block' : 'hidden')}>
+                                                className={"absolute right-0 mt-2 z-50 origin-top-right rounded-md shadow-lg select-none " + (profileClicked ? 'block' : 'hidden')}>
                                                 <div className="shadow-xl rounded-md bg-white overflow-hidden" role="menu"
                                                      aria-orientation="vertical" aria-labelledby="user-menu">
                                                     {profileSettings.map(item =>
                                                         (
                                                             <a key={item.name}
-                                                                onMouseDown={async () => {if (item.href === 'signOut'){await signOut(); await router.push('/')} else {await router.push(item.href)}}}
+                                                               onMouseDown={async () =>
+                                                               {item.name === 'signOut' ? await signOut({ callbackUrl: item.href }) : await router.push(item.href)}}
                                                                 className="grid grid-rows-1 grid-flow-col items-center pr-1 cursor-pointer transition-all duration-150 ease-in-out hover:bg-gray-100">
                                                                 <div className="flex items-center justify-self-start">
                                                                     <p

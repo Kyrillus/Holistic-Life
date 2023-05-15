@@ -1,12 +1,6 @@
-import React, {useEffect} from 'react';
-import {useSession} from "next-auth/react";
-import {loginUser} from "../../lib/userAPI";
+import React from 'react';
 
 function Landing() {
-    const {data, status} = useSession();
-    useEffect( () => {
-        console.log(data);
-    });
 
     return (
         <div>

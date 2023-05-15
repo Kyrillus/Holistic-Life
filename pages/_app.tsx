@@ -7,12 +7,25 @@ import {useState} from "react";
 import MobileMenu from "../components/navbar/mobileMenu";
 import {SessionProvider} from "next-auth/react"
 import {AppProps} from "next/app";
-import {ChakraProvider} from "@chakra-ui/react";
+import {ChakraProvider, extendBaseTheme} from "@chakra-ui/react";
+import chakraTheme from '@chakra-ui/theme'
 
 function MyApp({Component, pageProps}: AppProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
+    const { Skeleton } = chakraTheme.components
+
+    const theme = extendBaseTheme({
+        fonts: {
+          body: `'Comfortaa', sans-serif`,
+        },
+        components: {
+            Skeleton,
+        },
+    })
+
     return (
+        <ChakraProvider theme={theme}>
             <ThemeProvider attribute="class" enableSystem={false}>
                 <SessionProvider session={pageProps.session}>
                     <Head>
@@ -30,6 +43,7 @@ function MyApp({Component, pageProps}: AppProps) {
                     <Footer/>
                 </SessionProvider>
             </ThemeProvider>
+        </ChakraProvider>
     )
 }
 
