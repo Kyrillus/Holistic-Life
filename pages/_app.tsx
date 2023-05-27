@@ -13,7 +13,7 @@ import chakraTheme from '@chakra-ui/theme'
 function MyApp({Component, pageProps}: AppProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
-    const { Skeleton } = chakraTheme.components
+    const { Skeleton, Switch } = chakraTheme.components
 
     const theme = extendBaseTheme({
         fonts: {
@@ -21,6 +21,7 @@ function MyApp({Component, pageProps}: AppProps) {
         },
         components: {
             Skeleton,
+            Switch,
         },
     })
 
