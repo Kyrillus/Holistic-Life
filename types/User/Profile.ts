@@ -7,4 +7,5 @@ export interface profileForms {
     male: boolean,
     country: string,
     city: string,
+    mailerList: boolean,
 }

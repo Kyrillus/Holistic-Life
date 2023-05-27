@@ -8,7 +8,7 @@ import {FaRegSave} from 'react-icons/fa';
 import {useSession} from "next-auth/react";
 import {updateUser, userDetails} from "../lib/userAPI";
 import {profileForms} from "../types/User/Profile";
-import { Skeleton, Stack } from '@chakra-ui/react'
+import {Skeleton, Switch} from '@chakra-ui/react'
 
 function Profile() {
     const {data, status} = useSession<any>();
@@ -22,7 +22,8 @@ function Profile() {
         birthday: new Date(),
         male: true,
         country: '',
-        city: ''
+        city: '',
+        mailerList: true,
     })
 
     useEffect(() => {
@@ -36,7 +37,8 @@ function Profile() {
                     birthday: new Date(data.birthday != undefined ? data.birthday : new Date()),
                     male: data.male,
                     country: data.country,
-                    city: data.city
+                    city: data.city,
+                    mailerList: data.mailerList,
                 });
                 setDataLoaded(true);
             });
@@ -44,7 +46,7 @@ function Profile() {
 
     }, [status]);
 
-    const {firstname, lastname, email, phone, birthday, male, country, city} = profileData;
+    const {firstname, lastname, email, phone, birthday, male, country, city, mailerList} = profileData;
 
     const onChangeInput = (e: any) => {
         const {name, value} = e.target
@@ -64,7 +66,11 @@ function Profile() {
         setProfileData({...profileData, male: male})
     }
 
-    function onSubmitForm(e) {
+    const onChangeMailingList = (e: any) => {
+        setProfileData({...profileData, mailerList: e.target.checked})
+    }
+
+    function onSubmitForm(e: any) {
         e.preventDefault();
         updateUser(data?.user.id, profileData).then((data) => {
             // TODO: show  toast
@@ -164,7 +170,15 @@ function Profile() {
                                                    type="text"/>
                                         </Skeleton>
                                     </div>
-                                    <div className="flex justify-end md:col-start-2">
+                                    <div className="flex flex-col gap-1">
+                                        <label className="relative inline-flex items-center cursor-pointer">
+                                            <Skeleton isLoaded={dataLoaded}>
+                                                <Switch id="mailer-list" onChange={(e) => onChangeMailingList(e)} isChecked={mailerList}/>
+                                            </Skeleton>
+                                            <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Subscribed to mailing list</span>
+                                        </label>
+                                    </div>
+                                    <div className="flex justify-end col-span-2">
                                         <button type="submit"
                                                 className="rounded-lg shadow-lg px-3 py-1 text-white bg-sky-700 flex justify-center items-center gap-2">
                                             <FaRegSave className="mb-0.5"/>Save
