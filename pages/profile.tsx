@@ -8,7 +8,9 @@ import {FaRegSave} from 'react-icons/fa';
 import {useSession} from "next-auth/react";
 import {updateUser, userDetails} from "../lib/userAPI";
 import {profileForms} from "../types/User/Profile";
-import {Skeleton, Switch} from '@chakra-ui/react'
+import {Box, Skeleton, Switch, useToast} from '@chakra-ui/react'
+import {BsCheckCircleFill} from "react-icons/bs";
+import LoadingSpinner from "../components/Loaders/LoadingSpinner";
 
 function Profile() {
     const {data, status} = useSession<any>();
@@ -25,6 +27,8 @@ function Profile() {
         city: '',
         mailerList: true,
     })
+
+    const toast = useToast();
 
     useEffect(() => {
         if (data) {
@@ -47,6 +51,8 @@ function Profile() {
     }, [status]);
 
     const {firstname, lastname, email, phone, birthday, male, country, city, mailerList} = profileData;
+
+    const [update, setUpdate] = useState(false);
 
     const onChangeInput = (e: any) => {
         const {name, value} = e.target
@@ -71,9 +77,22 @@ function Profile() {
     }
 
     function onSubmitForm(e: any) {
+        setUpdate(true);
         e.preventDefault();
         updateUser(data?.user.id, profileData).then((data) => {
-            // TODO: show  toast
+            setUpdate(false);
+            toast({
+                position: 'top-right',
+                duration: 2500,
+                 render: () => (
+                        <Box color='black' p={3} bg='white' className="rounded shadow">
+                            <div className="flex flex-row gap-2 justify-center items-center">
+                                <BsCheckCircleFill color="green" size="20"/>
+                                <span>successfully updated profile</span>
+                            </div>
+                        </Box>
+                    ),
+            })
         });
     }
 
@@ -182,6 +201,9 @@ function Profile() {
                                         <button type="submit"
                                                 className="rounded-lg shadow-lg px-3 py-1 text-white bg-sky-700 flex justify-center items-center gap-2">
                                             <FaRegSave className="mb-0.5"/>Save
+                                            {
+                                                update ? (<div className="w-5 h-5"> <LoadingSpinner/> </div>) : ""
+                                            }
                                         </button>
                                     </div>
                                 </form>
