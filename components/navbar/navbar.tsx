@@ -26,13 +26,12 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                             </div>
                         </div>
                         <div className="flex px-2 lg:px-0">
-                            <div className="flex flex-shrink-0 items-center z-[999]">
-                                <h1 onClick={async () => {
-                                    await router.push('/')
-                                    setNavbarOpen(false)
-                                }}
-                                    className="cursor-pointer font-regular text-white text-2xl header select-none">holistic
-                                    life</h1>
+                            <div onClick={async () => {
+                                await router.push('/')
+                                setNavbarOpen(false)
+                            }} className="flex flex-shrink-0 items-center z-[999] cursor-pointer">
+                                <img className="w-12 h-12" src={'/logo/holistic_life_logo_thickversion.svg'}/>
+                                <h1 className="cursor-pointer font-regular text-white text-2xl header select-none">holistic life</h1>
                             </div>
                         </div>
                         {/* Menu Buttons */}
@@ -70,13 +69,14 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                             </div>
                                             {/* Settings Menu */}
                                             <div
-                                                className={"absolute right-0 mt-2 z-10 origin-top-right rounded-md shadow-lg select-none " + (profileClicked ? 'block' : 'hidden')}>
+                                                className={"absolute right-0 mt-2 z-50 origin-top-right rounded-md shadow-lg select-none " + (profileClicked ? 'block' : 'hidden')}>
                                                 <div className="shadow-xl rounded-md bg-white overflow-hidden" role="menu"
                                                      aria-orientation="vertical" aria-labelledby="user-menu">
                                                     {profileSettings.map(item =>
                                                         (
-                                                            <div key={item.name}
-                                                                onMouseDown={ async (e) => {e.preventDefault(); await signOut()}}
+                                                            <a key={item.name}
+                                                               onMouseDown={async () =>
+                                                               {item.name === 'signOut' ? await signOut({ callbackUrl: item.href }) : await router.push(item.href)}}
                                                                 className="grid grid-rows-1 grid-flow-col items-center pr-1 cursor-pointer transition-all duration-150 ease-in-out hover:bg-gray-100">
                                                                 <div className="flex items-center justify-self-start">
                                                                     <p
@@ -87,7 +87,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
                                                                     className="flex items-center w-10 h-auto justify-center justify-self-end">
                                                                     {item.icon({className: `${item.size ? ("w-" + item.size + " h-" + item.size) : " w-6 h-6 "} text-sapphire`})}
                                                                 </div>
-                                                            </div>
+                                                            </a>
                                                         )
                                                     )}
                                                 </div>

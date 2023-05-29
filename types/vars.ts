@@ -27,9 +27,9 @@ export const legalLinks = [
 ];
 
 export const profileSettings = [
-    {name: "profile", icon: MdContactPage, href: "#"},
-    {name: "settings", icon: FcSettings, href:"#", size: 5},
-    {name: "signOut", icon: BiLogOut, href: "signOut", size: 5},
+    {name: "profile", icon: MdContactPage, href: "/profile"},
+    {name: "settings", icon: FcSettings, href:"/settings", size: 5},
+    {name: "signOut", icon: BiLogOut, href: "/login", size: 5},
 ];
 
 export const moonColorDesktop = "#C9C6C6FF";

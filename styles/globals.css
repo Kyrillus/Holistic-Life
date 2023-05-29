@@ -21,6 +21,14 @@ body {
     @apply dark:bg-gray-900;
 }
 
+input {
+    @apply dark:bg-white;
+}
+
+select {
+    @apply dark:bg-white;
+}
+
 .noSelectionOrDrag {
     user-drag: none;
     -webkit-user-drag: none;
@@ -32,4 +40,8 @@ body {
 
 img {
     @apply noSelectionOrDrag;
+}
+
+.PhoneInputInput:focus {
+    outline: none;
 }
