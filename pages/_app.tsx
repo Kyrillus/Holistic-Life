@@ -30,7 +30,7 @@ function MyApp({Component, pageProps}: AppProps) {
             <ThemeProvider attribute="class" enableSystem={false}>
                 <SessionProvider session={pageProps.session}>
                     <Head>
-                        <title>Holistic Life</title>
+                        <title>holistic life</title>
                         <link rel="icon"
                               href=""
                               sizes="32x32"/>

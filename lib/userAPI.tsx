@@ -25,7 +25,7 @@ export async function updateUser(userId: string, profileData: profileForms) {
 
 }
 
-export async function registerUser(firstname: string, lastname: string, email: string, password: string) {
+export async function registerUser(firstname: string, lastname: string, email: string, password: string, attribution: string) {
     try {
         const response = await fetch(`${API_URL}/auth/local/register`, {
             method: 'POST',
@@ -37,7 +37,8 @@ export async function registerUser(firstname: string, lastname: string, email: s
                 lastname: lastname,
                 username: email,
                 email: email,
-                password: password
+                password: password,
+                attribution: attribution
             }),
         });
 
@@ -107,7 +108,8 @@ export async function userExists(email: string) {
             }
         });
 
-        return response.ok;
+        const data = await response.json();
+        return data.length > 0;
     } catch (err) {
         return false;
     }

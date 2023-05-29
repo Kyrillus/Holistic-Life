@@ -1,14 +1,12 @@
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
 import Landing from "../components/landing/landing";
 
 const LandingPage: NextPage = () => {
     return (
         <div className="">
             <Head>
-                <title>Holistic Life</title>
+                <title>holistic life</title>
                 <link rel="icon"
                       href=""
                       sizes="32x32"/>
