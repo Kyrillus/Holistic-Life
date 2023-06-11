@@ -12,6 +12,7 @@ import {
 import {MdAddCircle, MdEdit} from "react-icons/md";
 import {FcDeleteRow} from "react-icons/fc";
 import {Reorder} from 'framer-motion';
+import Radar from "./ResponsiveRadar";
 
 export interface graphData {
     lifearea: string;
@@ -19,7 +20,7 @@ export interface graphData {
     past: number;
 }
 
-function LevelTenLife() {
+function ThirdAssessment() {
     const [data, setData] = useState<graphData[]>([]);
     const [lifeArea, setLifeArea] = useState("");
     const addLifeArea = () => {
@@ -55,9 +56,9 @@ function LevelTenLife() {
     };
 
     return (
-        <section className="flex w-full w-screen flex-col md:flex-row  items-center md:pr-20 pb-12">
+        <section className="flex w-full flex-col md:flex-row  items-center md:pr-20 pb-12">
             <div className="flex dark:fill-white flex-row h-[400px] w-[400px] p-2">
-                <MyResponsiveRadar data={data}/>
+                <Radar data={data}/>
             </div>
             <div className="flex flex-col items-center md:self-start pt-24 pl-12">
                 <div className="self-end pt-2">
@@ -114,28 +115,4 @@ function LevelTenLife() {
     );
 }
 
-const MyResponsiveRadar = ({data}: any) => (
-    <ResponsiveRadar
-        data={data}
-        keys={['current', 'past']}
-        indexBy="lifearea"
-        valueFormat={(key, value) => {
-            return key + "%"
-        }}
-        margin={{top: 70, right: 80, bottom: 40, left: 90}}
-        borderColor={{from: 'color', modifiers: []}}
-        gridLevels={10}
-        gridLabelOffset={18}
-        dotSize={6}
-        maxValue={100}
-        dotColor={{theme: 'grid.line.stroke'}}
-        dotBorderWidth={2}
-        dotBorderColor={{from: 'color', modifiers: []}}
-        colors={{scheme: 'category10'}}
-        fillOpacity={0.4}
-        blendMode="multiply"
-        motionConfig="wobbly"
-    />
-)
-
-export default LevelTenLife;
+export default ThirdAssessment;

@@ -18,7 +18,7 @@ function Navbar({navbarOpen, setNavbarOpen}: { navbarOpen: any, setNavbarOpen: a
     return (
         <div className="select-none">
             <nav className="dark:bg-transparent bg-prussianBlue font-[Comfortaa]">
-                <div className="px-6 lg:px-32">
+                <div className="px-6 lg:px-24 xl:px-32">
                     <div className="flex h-16 justify-between">
                         <div className="flex items-center invisible z-[999] lg:hidden">
                             <div className="text-white">

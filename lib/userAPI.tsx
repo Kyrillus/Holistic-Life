@@ -22,10 +22,32 @@ export async function updateUser(userId: string, profileData: profileForms) {
     } catch (err) {
         return Promise.reject(err);
     }
-
 }
 
-export async function registerUser(firstname: string, lastname: string, email: string, password: string, attribution: string) {
+export async function updateUserAttribution(userId: string, attribution: string) {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${BEARER_TOKEN}`,
+                'content-type': 'application/json;charset=UTF-8'
+            },
+            body: JSON.stringify({
+                attribution: attribution
+            })
+        });
+
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response.json());
+        }
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
+export async function registerUser(firstname: string, lastname: string, email: string, password: string) {
     try {
         const response = await fetch(`${API_URL}/auth/local/register`, {
             method: 'POST',
@@ -37,8 +59,7 @@ export async function registerUser(firstname: string, lastname: string, email: s
                 lastname: lastname,
                 username: email,
                 email: email,
-                password: password,
-                attribution: attribution
+                password: password
             }),
         });
 

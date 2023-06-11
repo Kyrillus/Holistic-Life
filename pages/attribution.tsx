@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import {legalLinks} from "../types/vars";
-import Link from "next/link";
 
 const FormPage = () => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -14,7 +12,6 @@ const FormPage = () => {
         ];
 
     const handleOptionChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        console.log(event.target.value);
         setSelectedOption(event.target.value);
     }
 

@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import Link from "next/link";
 import {legalLinks} from "../types/vars";
 import {getSession, signIn} from "next-auth/react";
-import {registerUser, userExists} from "../lib/userAPI";
+import {registerUser, updateUserAttribution, userExists} from "../lib/userAPI";
 import {Switch} from "@chakra-ui/react";
 import {useRouter} from "next/router";
+import LoadingSpinner from "../components/Loaders/LoadingSpinner";
 
 function Register() {
     const [firstname, setFirstname] = useState("");
@@ -14,6 +15,7 @@ function Register() {
     const [cpassword, setCPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [attribution, setAttribution] = useState(false);
+    const [registerLoading, setRegisterLoading] = useState(false);
     const router = useRouter();
     const [selectedOption, setSelectedOption] = useState('');
     const [other, setOther] = useState('');
@@ -59,10 +61,14 @@ function Register() {
     const attributionSubmit = (e: any) => {
         e.preventDefault();
         if (selectedOption.length > 0) {
-            registerUser(firstname, lastname, email, password, selectedOption === "other" ? other : selectedOption)
-                .then(async () => {
+            setRegisterLoading(true);
+            registerUser(firstname, lastname, email, password)
+                .then(async (createdUser) => {
+                    setRegisterLoading(false);
+                    updateUserAttribution(createdUser.user.id, selectedOption === "other" ? other : selectedOption)
                     await router.push({pathname: "/email-confirmation"});
                 }).catch(async (error) => {
+                setRegisterLoading(false);
                 const err = await error;
                 setErrorMessage("An error occurred. Please try again later.");
             });
@@ -177,7 +183,7 @@ function Register() {
                 :
                 <section className="relative overflow-hidden py-16 select-none">
                     <div className="container relative z-10 mx-auto px-4">
-                        <div className="-m-6 flex flex-wrap">
+                        {registerLoading ? <LoadingSpinner /> : <><div className="-m-6 flex flex-wrap">
                             <div className="w-full p-6">
                                 <form autoComplete="off"
                                       onSubmit={(e) => attributionSubmit(e)}
@@ -240,7 +246,8 @@ function Register() {
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div></>}
+
                     </div>
                 </section>}
 

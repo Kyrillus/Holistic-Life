@@ -1,10 +1,12 @@
 import React from 'react';
-import LevelTenLife from "./levelTenLife";
+import ThirdAssessment from "../components/dashboard/levelTenLife/ThirdAssessment";
+import FirstAssessment from "../components/dashboard/levelTenLife/FirstAssessment";
 
 function Dashboard() {
     return (
         <div>
-            <LevelTenLife/>
+            <ThirdAssessment/>
+            <FirstAssessment/>
         </div>
     );
 }
