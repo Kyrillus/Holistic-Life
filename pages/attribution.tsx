@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 const FormPage = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const attributionValues =
         ["friends",
-        "member of holistic life",
-        "seminar or workshop",
-        "blog, article or publication",
-        "linkedin",
-        "youtube",
+            "member of holistic life",
+            "seminar or workshop",
+            "blog, article or publication",
+            "linkedin",
+            "youtube",
         ];
 
     const handleOptionChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -16,9 +16,9 @@ const FormPage = () => {
     }
 
     const otherChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        if (event.target.value.length > 0){
+        if (event.target.value.length > 0) {
             setSelectedOption("other");
-        }else {
+        } else {
             setSelectedOption("");
         }
     }
@@ -30,7 +30,8 @@ const FormPage = () => {
                     <div className="w-full p-6">
                         <form autoComplete="off"
                               className="mx-auto rounded-xl py-14 text-center md:dark:bg-slate-800 shadow-gray-400 dark:shadow-black md:shadow-2xl md:max-w-xl">
-                            <h2 className="font-heading pb-4 text-3xl font-bold text-prussianBlue dark:text-white px-4 md:px-16">How did you discover holistic life?</h2>
+                            <h2 className="font-heading pb-4 text-3xl font-bold text-prussianBlue dark:text-white px-4 md:px-16">How
+                                did you discover holistic life?</h2>
                             <div className="flex w-full justify-center pt-4">
                                 <div className="flex flex-col justify-self-center self-center items-center">
                                     <div className="flex flex-col items-start">
@@ -44,7 +45,8 @@ const FormPage = () => {
                                                         checked={selectedOption === value}
                                                         onChange={handleOptionChange}
                                                         className="mr-2"/>
-                                                    <label htmlFor={value} className="text-base dark:text-white">{value}</label>
+                                                    <label htmlFor={value}
+                                                           className="text-base dark:text-white">{value}</label>
                                                 </div>
                                             )
                                         })}
@@ -56,7 +58,9 @@ const FormPage = () => {
                                                 checked={selectedOption === "other"}
                                                 onChange={handleOptionChange}
                                                 className="mr-2"/>
-                                            <input type="text" onChange={(e) => otherChange(e)} className="text-base dark:text-white border rounded px-2 py-1 focus:outline-0" placeholder="other" />
+                                            <input type="text" onChange={(e) => otherChange(e)}
+                                                   className="text-base dark:text-white border rounded px-2 py-1 focus:outline-0"
+                                                   placeholder="other"/>
                                         </div>
                                     </div>
                                 </div>
