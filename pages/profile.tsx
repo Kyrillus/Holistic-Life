@@ -32,6 +32,7 @@ function Profile() {
 
     useEffect(() => {
         if (data) {
+            console.log(data);
             userDetails(data.user?.email).then((data) => {
                 setProfileData({
                     firstname: data.firstname,
